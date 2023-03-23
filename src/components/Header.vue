@@ -22,10 +22,15 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .navele{
-  margin-left: 1rem;
-  margin-right: 1rem;
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  
 }
 </style>
+
+

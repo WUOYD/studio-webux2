@@ -123,16 +123,17 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
+  height: 90%;
 }
 
 .track{ 
-  width: calc(80% / 2 );
+  width: calc(70% / 2 );
   height: auto;
   margin: 2.5%; 
   border: 1px solid #fff;
   justify-items: stretch;
   display: grid;
+  box-sizing: border-box;
 
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);

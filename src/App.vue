@@ -1,9 +1,9 @@
 <script setup>
-import Sequencer from './components/Sequencer.vue'
-import Track from './components/Track.vue'
-import Options from './components/Options.vue'
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+  import Sequencer from './components/Sequencer.vue'
+  import Track from './components/Track.vue'
+  import Options from './components/Options.vue'
+  import Header from './components/Header.vue'
+  import Footer from './components/Footer.vue'
 </script>
 
 <template>
