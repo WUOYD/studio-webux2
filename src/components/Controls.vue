@@ -1,5 +1,5 @@
 <script setup>
-  import { sequencer } from '../scripts';
+import { sequencer } from '../scripts';
 </script>
 
 <template>
@@ -10,16 +10,16 @@
 </template>
 
 <style scoped>
- .controls{
+.controls {
   width: 100%;
   height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
- }
+}
 
-.controlele{
+.controlele {
   width: 5%;
   display: flex;
   justify-content: center;
@@ -28,12 +28,12 @@
 </style>
 
 <script>
-export default{
-  mounted(){
+export default {
+  mounted() {
     document.getElementById("play").addEventListener("click", this.updatePlay);
     document.getElementById("stop").addEventListener("click", this.updateStop);
   },
-  methods:{
+  methods: {
     updatePlay() {
       this.$status = "play"
       sequencer()
