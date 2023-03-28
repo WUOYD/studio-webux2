@@ -4,10 +4,12 @@
   import Options from './components/Options.vue'
   import Header from './components/Header.vue'
   import Footer from './components/Footer.vue'
+  import Controls from './components/Controls.vue'
 </script>
 
 <template>
   <Header /> 
+  <Controls />
   <keep-alive>       
       <component :is="comp"></component>  
   </keep-alive>
@@ -22,7 +24,9 @@ export default{
     Options
   },
   data() {
-    return{comp:"Sequencer"}
+    return{
+      comp:"Sequencer",
+  }
   },
   mounted(){
     document.getElementById("navsequencer").addEventListener("click", this.updateSeq);

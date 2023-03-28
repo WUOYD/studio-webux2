@@ -1,6 +1,6 @@
 <template>
     <div id="header">
-        <h1>SoundCave</h1>
+        <h1>MashRoom</h1>
     </div>
     <div id="nav">
         <div class="navele" id="navsequencer">Sequencer</div>
@@ -19,17 +19,16 @@
 }
 
 #nav{
+  height: 5%;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 2rem;
 }
 
 .navele{
   width: 10%;
   display: flex;
   justify-content: center;
-  
 }
 </style>
 

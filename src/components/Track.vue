@@ -1,36 +1,61 @@
 <template>
     <div class="content">
-      <div class="controls"></div>
       <div id="trackInterface">
-        <div class="grid" id="track1"></div>
-        <div class="grid" id="track2"></div>
+        <div id="instruments">
+          <div class="instrument"></div>
+          <div class="instrument"></div>
+          <div class="instrument"></div>
+          <div class="instrument"></div>
+          <div class="instrument"></div>
+          <div class="instrument"></div>
+        </div>
+        <div id="grids">
+          <div class="grid" id="track1"></div>
+          <div class="grid" id="track2"></div>
+          <div class="grid" id="track3"></div>
+          <div class="grid" id="track4"></div>
+          <div class="grid" id="track5"></div>
+          <div class="grid" id="track6"></div>
+        </div>
       </div>
     </div>  
 </template>
 
 <style scoped>
-  #grid {
-    display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    border: 1px solid #fff;
-  }
 
   #trackInterface{
     width: 100%;
     height: 100%;
     justify-items: stretch;
+    display: flex;
   }
 
-  .cell{
-    width: calc(100%/16);
+  #instruments{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .instrument{
     height: calc(100%/6);
+    width: 100%;
+    border: 1px solid rgb(60, 255, 255);
+    box-sizing: border-box;
+  }
+
+  #grids{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .grid {
+    width: 100%;
+    height: calc(100%/6);
+    display: flex;
+    flex-wrap: wrap;
     border: 1px solid #fff;
     box-sizing: border-box;
   }
@@ -39,64 +64,32 @@
     background-color: #fff;
   }
 
-  #cell1 { grid-area: 1 / 1 / 2 / 2; }
-  #cell2 { grid-area: 1 / 2 / 2 / 3; }
-  #cell3 { grid-area: 1 / 3 / 2 / 4; }
-  #cell4 { grid-area: 1 / 4 / 2 / 5; }
-  #cell5 { grid-area: 2 / 1 / 3 / 2; }
-  #cell6 { grid-area: 2 / 2 / 3 / 3; }
-  #cell7 { grid-area: 2 / 3 / 3 / 4; }
-  #cell8 { grid-area: 2 / 4 / 3 / 5; }
-  #cell9 { grid-area: 3 / 1 / 4 / 2; }
-  #cell10 { grid-area: 3 / 2 / 4 / 3; }
-  #cell11 { grid-area: 3 / 3 / 4 / 4; }
-  #cell12 { grid-area: 3 / 4 / 4 / 5; }
-  #cell13 { grid-area: 4 / 1 / 5 / 2; }
-  #cell14 { grid-area: 4 / 2 / 5 / 3; }
-  #cell15 { grid-area: 4 / 3 / 5 / 4; }
-  #cell16 { grid-area: 4 / 4 / 5 / 5; }
-
 </style>
 
 
 <script>
 export default{
   mounted(){
+    document.querySelectorAll(".grid").forEach(grid => {
+      for(let x=0; x<8;x++) {
+        var cell = document.createElement('div');
+        cell.className = "cell";
+        grid.appendChild(cell);
+        }
+      }),
     document.querySelectorAll(".cell").forEach(cell => {
       cell.addEventListener("click", event => {
         let parent = event.target.parentNode;
         let index = Array.from(parent.children).indexOf(event.target);
         event.target.classList.toggle("selected");
-        this.changeState(index);
-        console.log(this.track)
+        this.changeState(index, parent.id);
       })
     })
   },
-  data() {
-    return {
-      track1: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track2: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track3: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track4: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track5: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track6: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track7: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-      track8: [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false],
-    };
-  },
-  methods: {
-    changeState(index) {
-      this.track1[index] = !this.track[index];
-    },
-  },
-  render: function() {
-      document.querySelectorAll(".grid").forEach(grid => {
-        for(x=0; x<16;x++) {
-          var cell = document.createElement('div');
-          cell.className = "cell";
-          grid.appendChild(cell);
-        }
-      })
+methods: {
+    changeState(index, parentID) {  
+      this.$tracks.get(parentID)[index] = !this.$tracks.get(parentID)[index];
+    }
   }
 }
 </script>

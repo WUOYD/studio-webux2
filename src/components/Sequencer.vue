@@ -1,6 +1,5 @@
 <template>
     <div class="content">
-      <div class="controls"></div>
       <div id="sequencer">
         <div class="track" id="track1">
             <div class="name" id="name1">
@@ -129,7 +128,7 @@
 .track{ 
   width: calc(70% / 2 );
   height: auto;
-  margin: 2.5%; 
+  margin: auto; 
   border: 1px solid #fff;
   justify-items: stretch;
   display: grid;
