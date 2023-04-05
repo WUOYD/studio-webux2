@@ -11,9 +11,6 @@
                 <div class="mute" id="mute1">
                     <p>Mute</p>
                 </div>
-                <div class="play" id="play1">
-                    <p>Play</p>
-                </div>
             </div>
             <div class="track" id="track2">
                 <div class="name" id="name2">
@@ -24,9 +21,6 @@
                 </div>
                 <div class="mute" id="mute2">
                     <p>Mute</p>
-                </div>
-                <div class="play" id="play2">
-                    <p>Play</p>
                 </div>
             </div>
             <div class="track" id="track3">
@@ -39,9 +33,6 @@
                 <div class="mute" id="mute3">
                     <p>Mute</p>
                 </div>
-                <div class="play" id="play3">
-                    <p>Play</p>
-                </div>
             </div>
             <div class="track" id="track4">
                 <div class="name" id="name4">
@@ -52,9 +43,6 @@
                 </div>
                 <div class="mute" id="mute4">
                     <p>Mute</p>
-                </div>
-                <div class="play" id="play4">
-                    <p>Play</p>
                 </div>
             </div>
             <div class="track" id="track5">
@@ -67,9 +55,6 @@
                 <div class="mute" id="mute5">
                     <p>Mute</p>
                 </div>
-                <div class="play" id="play5">
-                    <p>Play</p>
-                </div>
             </div>
             <div class="track" id="track6">
                 <div class="name" id="name6">
@@ -80,37 +65,6 @@
                 </div>
                 <div class="mute" id="mute6">
                     <p>Mute</p>
-                </div>
-                <div class="play" id="play6">
-                    <p>Play</p>
-                </div>
-            </div>
-            <div class="track" id="track7">
-                <div class="name" id="name7">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit7">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute7">
-                    <p>Mute</p>
-                </div>
-                <div class="play" id="play7">
-                    <p>Play</p>
-                </div>
-            </div>
-            <div class="track" id="track8">
-                <div class="name" id="name8">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit8">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute8">
-                    <p>Mute</p>
-                </div>
-                <div class="play" id="play8">
-                    <p>Play</p>
                 </div>
             </div>
         </div>
@@ -123,12 +77,12 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    height: 90%;
+    height: 100%;
 }
 
 .track {
-    width: calc(70% / 2);
-    height: auto;
+    width: calc(90% / 2);
+    height: 20%;
     margin: auto;
     border: 1px solid #fff;
     justify-items: stretch;
@@ -158,18 +112,10 @@
 }
 
 .mute {
-    grid-area: 2 / 2 / 3 / 3;
+    grid-area: 2 / 2 / 4 / 3;
     background-color: rgba(255, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.play {
-    grid-area: 3 / 2 / 4 / 3;
-    background-color: rgba(0, 128, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+}   
 </style> 
