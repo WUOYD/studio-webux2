@@ -37,7 +37,7 @@ export default{
   },
   data() {
     return{
-      comp:"Track1"
+      comp:"Sequencer"
     }
   },
   mounted() {
