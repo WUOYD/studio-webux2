@@ -139,7 +139,7 @@
 </style> 
 
 <script>
-import { Howl, Howler } from 'howler'
+import { Howl } from 'howler'
 import { socket } from '../client'
 
 export default {
@@ -175,8 +175,6 @@ export default {
             }
         }
     })
-  },
-  methods: {
   }
 }
 </script>

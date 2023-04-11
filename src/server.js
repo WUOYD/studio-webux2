@@ -13,6 +13,8 @@ const io = new Server(server, {
 
 let playStatus = true
 
+let bar = 0
+
 let track1 = [false, false, false, false, false, false, false, false]
 let track2 = [false, false, false, false, false, false, false, false]
 let track3 = [false, false, false, false, false, false, false, false]
@@ -27,8 +29,14 @@ app.get('/', (req, res) => {
 app.use(express.static('public'))
 
 io.on('connection', (socket) => {
-  //Server Message
+  //Server message & update 
   console.log('new connection: ' + socket.id)
+  socket.to(socket.id).emit('updateComponentT1', track1);
+  socket.to(socket.id).emit('updateComponentT2', track2);
+  socket.to(socket.id).emit('updateComponentT3', track3);
+  socket.to(socket.id).emit('updateComponentT4', track4);
+  socket.to(socket.id).emit('updateComponentT5', track5);
+  socket.to(socket.id).emit('updateComponentT6', track6);
 
   //Sockets
   socket.on('updateT1', (index) => {
@@ -69,25 +77,27 @@ server.listen(3000, () => {
 
 // Sequencer Interval
 setInterval(() => {
-  let bar = 0;
-  //console.log(track1)
   let tracks = [track1, track2, track3, track4, track5, track6]
   if (playStatus == true) {
     let playSounds = [
-      tracks[bar][0],
-      tracks[bar][1],
-      tracks[bar][2],
-      tracks[bar][3],
-      tracks[bar][4],
-      tracks[bar][5],
+      tracks[0][bar],
+      tracks[1][bar],
+      tracks[2][bar],
+      tracks[3][bar],
+      tracks[4][bar],
+      tracks[5][bar],
     ]
     io.emit('playSounds', playSounds)
-    if (bar == 7) {
-      bar = 0
-    } else {
-      bar++
-    }
   } else if (playStatus == false) {
   } else {
   }
+  sequencerStep()
 }, 500)
+
+function sequencerStep(){
+  if (bar == 7) {
+    bar = 0
+  } else {
+    bar++
+  }
+}

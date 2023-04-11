@@ -54,12 +54,19 @@ export default {
     socket.on("broadcastT1", index => {
       let element = document.getElementById(index.id);
       element.classList.toggle("selected");
-    });
+    }),
+    socket.on("updateComponentT1", track => {
+      for (let i = 0; i < 8; i++) {
+        if(track[i]){
+          let element = document.getElementById(i);
+          element.classList.toggle("selected");
+        }
+      }
+    })
   },
   methods: {
     updateClick(element, index) {
       element.target.classList.toggle("selected");
-      console.log(index)
       socket.emit("updateT1", index);
     }
   }

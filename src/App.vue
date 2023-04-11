@@ -19,6 +19,9 @@
   <keep-alive>       
       <component :is="comp2"></component>  
   </keep-alive>
+  <keep-alive>       
+      <component :is="comp3"></component>  
+  </keep-alive>
   <Footer /> 
 </template>
 
@@ -41,7 +44,8 @@ export default{
   data() {
     return{
       comp1:"Sequencer",
-      comp2:"Track1"
+      comp2:"Track1",
+      comp3:"Track2"
     }
   },
   mounted() {
