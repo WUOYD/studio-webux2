@@ -139,20 +139,12 @@
 </style> 
 
 <script>
-import { Howl } from 'howler'
+import { Howl, Howler } from 'howler'
 import { socket } from '../client'
 
 export default {
   data() {
     return {
-        playStatus: true,
-        track1: [false,false,false,false,false,false,false,false],
-        track2: [false,false,false,false,false,false,false,false],
-        track3: [false,false,false,false,false,false,false,false],
-        track4: [false,false,false,false,false,false,false,false],
-        track5: [false,false,false,false,false,false,false,false],
-        track6: [false,false,false,false,false,false,false,false],
-        tracks: [this.track1, this.track2, this.track3, this.track4, this.track5, this.track6],
         sound1: new Howl({
             src: ['../src/sounds/bd.wav'],
             volume: 0.5,}),
@@ -171,51 +163,20 @@ export default {
         sound6: new Howl({
             src: ['../src/sounds/bd.wav'],
             volume: 0.5,}),
-        sounds: [this.sound1, this.sound2, this.sound3, this.sound4, this.sound5, this.sound6]
+        sounds: []
     }
   },
   mounted(){
-    socket.on("broadcastStatus", status => {
-        this.playStatus = status
-    });
-    socket.on("broadcastT1", index => {
-        this.track1[index] = !this.track1[index];
-    });
-    socket.on("broadcastT2", index => {
-        this.track2[index] = !this.track2[index];
-    });
-    socket.on("broadcastT3", index => {
-        this.track3[index] = !this.track3[index];
-    });
-    socket.on("broadcastT4", index => {
-        this.track4[index] = !this.track4[index];
-    });
-    socket.on("broadcastT5", index => {
-        this.track5[index] = !this.track5[index];
-    });
-    socket.on("broadcastT6", index => {
-        this.track6[index] = !this.track6[index];
-    });
+    this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound4, this.sound5, this.sound6)
+    socket.on('playSounds', playSounds => {
+        for (let j = 0; j < 6; j++) {
+            if(playSounds[j] == true){
+                this.sounds[j].play();
+            }
+        }
+    })
   },
   methods: {
-    sequencer() {
-        while (true) {
-            while (playStatus == true) {
-                for (let i = 0; i < 8; i++) {
-                    for (let j = 0; j < 6; j++) {
-                        if(tracks[i][j] == true){
-                            sounds[i].play();
-                        }
-                    }
-                }
-            }
-            while (playStatus == false) {}
-        }
-    },
-    updateStatus(){
-        this.playStatus = !this.playStatus;
-        socket.emit("updateStatus", this.playStatus);
-    }
   }
 }
 </script>
