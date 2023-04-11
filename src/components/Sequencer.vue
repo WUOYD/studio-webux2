@@ -9,7 +9,7 @@
                 <div class="name" id="name1">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit1">
+                <div class="edit" id="edit1" >
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute1">

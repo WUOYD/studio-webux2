@@ -1,26 +1,15 @@
 <template>
   <div class="content">
-    <h1>Track Drums</h1>
+    <h1>Track1</h1>
     <div class="trackInterface">
         <div class="instrument"></div>
         <div class="grid">
-          <div class="cell" v-for="index in 8" @click="updateClick($event, index)">
+          <div class="cell" v-for="item in items" :id="item.id" @click="updateClick($event, item.id)">
 	        </div>
         </div>
     </div>
   </div>
 </template>
-
-<script scoped>
-export default {
-  methods: {
-    updateClick(element, index) {
-      element.target.classList.toggle("selected");
-      socket.emit("updateT3", index);
-    }, 
-  }
-}
-</script>
 
 <style scoped>
 .trackInterface {
@@ -29,7 +18,6 @@ export default {
   justify-items: stretch;
   display: flex;
 }
-
 .instrument {
   height: 10%;
   width: calc(100%/9);
@@ -37,12 +25,10 @@ export default {
   display: flex;
   box-sizing: border-box;
 }
-
 h1 {
   width: 100%;
   text-align: left;
 }
-
 .grid {
   height: 10%;
   width: 90%;
@@ -54,3 +40,36 @@ h1 {
   background-color: #fff;
 }
 </style>
+
+<script>
+import { socket } from '../client'
+
+export default {
+  data() {
+    return {
+      items: [{id: 0},{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7}]
+    }
+  },
+  mounted(){
+    socket.on("broadcastT3", index => {
+      let element = document.getElementById(index.id);
+      element.classList.toggle("selected");
+    }),
+    socket.on("updateComponentT3", track => {
+      for (let i = 0; i < 8; i++) {
+        if(track[i]){
+          let element = document.getElementById(i);
+          element.classList.toggle("selected");
+        }
+      }
+    })
+  },
+  methods: {
+    updateClick(element, index) {
+      element.target.classList.toggle("selected");
+      socket.emit("updateT3", index);
+    }
+  }
+}
+</script>
+

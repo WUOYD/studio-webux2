@@ -31,12 +31,12 @@ app.use(express.static('public'))
 io.on('connection', (socket) => {
   //Server message & update 
   console.log('new connection: ' + socket.id)
-  socket.to(socket.id).emit('updateComponentT1', track1);
-  socket.to(socket.id).emit('updateComponentT2', track2);
-  socket.to(socket.id).emit('updateComponentT3', track3);
-  socket.to(socket.id).emit('updateComponentT4', track4);
-  socket.to(socket.id).emit('updateComponentT5', track5);
-  socket.to(socket.id).emit('updateComponentT6', track6);
+  socket.emit('updateComponentT1', track1);
+  socket.emit('updateComponentT2', track2);
+  socket.emit('updateComponentT3', track3);
+  socket.emit('updateComponentT4', track4);
+  socket.emit('updateComponentT5', track5);
+  socket.emit('updateComponentT6', track6);
 
   //Sockets
   socket.on('updateT1', (index) => {
