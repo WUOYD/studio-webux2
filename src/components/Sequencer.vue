@@ -9,7 +9,7 @@
                 <div class="name" id="name1">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit1" @click="updateComp(1)">
+                <div class="edit" id="edit1" @click="updateView(1)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute1">
@@ -20,7 +20,7 @@
                 <div class="name" id="name2">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit2" @click="updateComp(2)">
+                <div class="edit" id="edit2" @click="updateView(2)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute2">
@@ -31,7 +31,7 @@
                 <div class="name" id="name3">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit3" @click="updateComp(3)">
+                <div class="edit" id="edit3" @click="updateView(3)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute3">
@@ -42,7 +42,7 @@
                 <div class="name" id="name4">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit4" @click="updateComp(4)">
+                <div class="edit" id="edit4" @click="updateView(4)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute4">
@@ -53,7 +53,7 @@
                 <div class="name" id="name5">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit5" @click="updateComp(5)">
+                <div class="edit" id="edit5" @click="updateView(5)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute5">
@@ -64,7 +64,7 @@
                 <div class="name" id="name6">
                     <p>Name</p>
                 </div>
-                <div class="edit" id="edit6" @click="updateComp(6)">
+                <div class="edit" id="edit6" @click="updateView(6)">
                     <p>Edit</p>
                 </div>
                 <div class="mute" id="mute6">
@@ -177,7 +177,8 @@ export default {
     })
   },
   methods: {
-    updateComp(comp) {
+    updateView(comp) {
+        socket.emit("updateView", comp);
         socket.emit("updateComp", comp);
     }
   }

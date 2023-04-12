@@ -34,9 +34,14 @@ io.on('connection', (socket) => {
   //Server message & update
   console.log('new connection: ' + socket.id)
 
+  // Update View
+  
+  socket.on('updateView', (comp) => {
+    socket.emit('updateClientView', comp)
+  })
+
   // Component View
   socket.on('updateComp', (comp) => {
-    socket.emit('updateView', comp)
     switch (comp) {
       case 1:
         socket.emit('updateComponentT1', track1)
@@ -62,27 +67,27 @@ io.on('connection', (socket) => {
   //Sockets updates
   socket.on('updateT1', (index) => {
     track1[index] = !track1[index]
-    socket.broadcast.emit('broadcastT1', index)
+    socket.broadcast.emit('updateComponentT1', track1)
   })
   socket.on('updateT2', (index) => {
     track2[index] = !track2[index]
-    socket.broadcast.emit('broadcastT2', index)
+    socket.broadcast.emit('updateComponentT2', track2)
   })
   socket.on('updateT3', (index) => {
     track3[index] = !track3[index]
-    socket.broadcast.emit('broadcastT3', index)
+    socket.broadcast.emit('updateComponentT3', track3)
   })
   socket.on('updateT4', (index) => {
     track4[index] = !track4[index]
-    socket.broadcast.emit('broadcastT4', index)
+    socket.broadcast.emit('updateComponentT4', track4)
   })
   socket.on('updateT5', (index) => {
     track5[index] = !track5[index]
-    socket.broadcast.emit('broadcastT5', index)
+    socket.broadcast.emit('updateComponentT5', track5)
   })
   socket.on('updateT6', (index) => {
     track6[index] = !track6[index]
-    socket.broadcast.emit('broadcastT6', index)
+    socket.broadcast.emit('updateComponentT6', track6)
   })
 
   //Disconnect message

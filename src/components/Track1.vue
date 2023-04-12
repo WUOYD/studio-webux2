@@ -1,11 +1,11 @@
 <template>
   <div class="content">
-    <h1>Track1</h1>
-    <div id="backbutton" @click="updateComp(0)"></div>
+    <h1>Track 1</h1>
+    <div id="backbutton" @click="updateView(0)"></div>
     <div class="trackInterface">
       <div class="instrument"></div>
       <div class="grid">
-        <div class="cell" v-for="item in items" :id="item.id" @click="updateClick($event, item.id)">
+        <div class="cell" v-for="item in items" :id="item.id" :tile="item.tile" @click="updateClick($event, item.tile)">
         </div>
       </div>
     </div>
@@ -55,16 +55,15 @@ h1 {
 <script>
 import { socket } from '../client'
 
-socket.on("broadcastT1", index => {
-  let element = document.getElementById(index);
-  element.classList.toggle("selected");
-})
-
 socket.on("updateComponentT1", track => {
-  for (let i = 0; i < 8; i++) {
-    if (track[i]) {
-      let element = document.getElementById(i);
-      element.classList.toggle("selected");
+  for (let index = 0; index < 8; index++) {
+    let index_id = "1" + index;
+    let element = document.getElementById(index_id);
+    if (track[index]) {
+      element.classList.add("selected");
+    }
+    else if (!track[index]) {
+      element.classList.remove("selected");
     }
     else {}
   }
@@ -73,7 +72,7 @@ socket.on("updateComponentT1", track => {
 export default {
   data() {
     return {
-      items: [{ id: 0 }, { id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }]
+      items: [{ id: 10, tile: 0}, { id: 11, tile: 1}, { id: 12, tile: 2}, { id: 13 , tile: 3}, { id: 14, tile: 4 }, { id: 15, tile: 5 }, { id: 16, tile: 6 }, { id: 17, tile: 7 }]
     }
   },
   mounted() {
@@ -83,8 +82,8 @@ export default {
       element.target.classList.toggle("selected");
       socket.emit("updateT1", index);
     },
-    updateComp(comp) {
-        socket.emit("updateComp", comp);
+    updateView(comp) {
+      socket.emit("updateView", comp);
     }
   }
 }

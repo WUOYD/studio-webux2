@@ -41,34 +41,34 @@ export default {
     }
   },
   mounted() {
-    socket.on('updateView', comp => {
+    socket.on('updateClientView', comp => {
       switch (comp) {
         case 0:
-          this.updateComp("Sequencer")
+          this.updateView("Sequencer")
           break;
         case 1:
-          this.updateComp("Track1")
+          this.updateView("Track1")
           break;
         case 2:
-          this.updateComp("Track2")
+          this.updateView("Track2")
           break;
         case 3:
-          this.updateComp("Track3")
+          this.updateView("Track3")
           break;
         case 4:
-          this.updateComp("Track4")
+          this.updateView("Track4")
           break;
         case 5:
-          this.updateComp("Track5")
+          this.updateView("Track5")
           break;
         case 6:
-          this.updateComp("Track6")
+          this.updateView("Track6")
           break;
       }
     })
   },
   methods: {
-    updateComp(comp) {
+    updateView(comp) {
       this.comp = comp
     }
   },
