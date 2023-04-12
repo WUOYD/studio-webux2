@@ -14,6 +14,8 @@ const io = new Server(server, {
 let playStatus = true
 
 let bar = 0
+let bpm = 128
+let bpm_ms = 60000/bpm
 
 let track1 = [false, false, false, false, false, false, false, false]
 let track2 = [false, false, false, false, false, false, false, false]
@@ -29,16 +31,35 @@ app.get('/', (req, res) => {
 app.use(express.static('public'))
 
 io.on('connection', (socket) => {
-  //Server message & update 
+  //Server message & update
   console.log('new connection: ' + socket.id)
-  socket.emit('updateComponentT1', track1);
-  socket.emit('updateComponentT2', track2);
-  socket.emit('updateComponentT3', track3);
-  socket.emit('updateComponentT4', track4);
-  socket.emit('updateComponentT5', track5);
-  socket.emit('updateComponentT6', track6);
 
-  //Sockets
+  // Component View
+  socket.on('updateComp', (comp) => {
+    socket.emit('updateView', comp)
+    switch (comp) {
+      case 1:
+        socket.emit('updateComponentT1', track1)
+        break;
+      case 2:
+        socket.emit('updateComponentT2', track2)
+        break;
+      case 3:
+        socket.emit('updateComponentT3', track3)
+        break;
+      case 4:
+        socket.emit('updateComponentT4', track4)
+        break;
+      case 5:
+        socket.emit('updateComponentT5', track5)
+        break;
+      case 6:
+        socket.emit('updateComponentT6', track6)
+        break;
+    }
+  })
+
+  //Sockets updates
   socket.on('updateT1', (index) => {
     track1[index] = !track1[index]
     socket.broadcast.emit('broadcastT1', index)
@@ -92,9 +113,9 @@ setInterval(() => {
   } else {
   }
   sequencerStep()
-}, 500)
+}, bpm_ms)
 
-function sequencerStep(){
+function sequencerStep() {
   if (bar == 7) {
     bar = 0
   } else {

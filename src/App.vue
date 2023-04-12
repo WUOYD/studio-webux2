@@ -1,37 +1,28 @@
 <script setup>
-  import Sequencer from './components/Sequencer.vue'
-  import Options from './components/Options.vue'
-  import Header from './components/Header.vue'
-  import Footer from './components/Footer.vue'
-  import Track1 from './components/Track1.vue'
-  import Track2 from './components/Track2.vue'
-  import Track3 from './components/Track3.vue'
-  import Track4 from './components/Track4.vue'
-  import Track5 from './components/Track5.vue'
-  import Track6 from './components/Track6.vue'
+import Sequencer from './components/Sequencer.vue'
+import Options from './components/Options.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Track1 from './components/Track1.vue'
+import Track2 from './components/Track2.vue'
+import Track3 from './components/Track3.vue'
+import Track4 from './components/Track4.vue'
+import Track5 from './components/Track5.vue'
+import Track6 from './components/Track6.vue'
 </script>
 
 <template>
-  <Header /> 
-  <keep-alive>       
-      <component :is="comp1"></component>  
+  <Header />
+  <keep-alive>
+    <component :is="comp"></component>
   </keep-alive>
-  <keep-alive>       
-      <component :is="comp2"></component>  
-  </keep-alive>
-  <keep-alive>       
-      <component :is="comp3"></component>  
-  </keep-alive>
-  <keep-alive>       
-      <component :is="comp4"></component>  
-  </keep-alive>
-  <Footer /> 
+  <Footer />
 </template>
 
 <script>
 import { socket } from './client.js'
-export default{
-  components:{
+export default {
+  components: {
     Sequencer,
     Track1,
     Track2,
@@ -41,27 +32,49 @@ export default{
     Track6,
     Options
   },
-  created(){
+  created() {
     socket.connect();
   },
   data() {
-    return{
-      comp1:"Sequencer",
-      comp2:"Track1",
-      comp3:"Track2",
-      comp4:"Track3"
+    return {
+      comp: "Sequencer",
     }
   },
   mounted() {
+    socket.on('updateView', comp => {
+      switch (comp) {
+        case 0:
+          this.updateComp("Sequencer")
+          break;
+        case 1:
+          this.updateComp("Track1")
+          break;
+        case 2:
+          this.updateComp("Track2")
+          break;
+        case 3:
+          this.updateComp("Track3")
+          break;
+        case 4:
+          this.updateComp("Track4")
+          break;
+        case 5:
+          this.updateComp("Track5")
+          break;
+        case 6:
+          this.updateComp("Track6")
+          break;
+      }
+    })
   },
-  methods:{
+  methods: {
     updateComp(comp) {
       this.comp = comp
     }
   },
-  beforeUnmount(){
+  beforeUnmount() {
     socket.disconnect();
   }
-  
+
 }
 </script>

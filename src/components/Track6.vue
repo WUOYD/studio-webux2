@@ -52,7 +52,7 @@ export default {
   },
   mounted(){
     socket.on("broadcastT6", index => {
-      let element = document.getElementById(index.id);
+      let element = document.getElementById(index);
       element.classList.toggle("selected");
     }),
     socket.on("updateComponentT6", track => {

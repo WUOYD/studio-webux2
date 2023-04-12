@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <h1>Track1</h1>
+    <h1>Track3</h1>
     <div class="trackInterface">
         <div class="instrument"></div>
         <div class="grid">
@@ -52,7 +52,7 @@ export default {
   },
   mounted(){
     socket.on("broadcastT3", index => {
-      let element = document.getElementById(index.id);
+      let element = document.getElementById(index);
       element.classList.toggle("selected");
     }),
     socket.on("updateComponentT3", track => {
