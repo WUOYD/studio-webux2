@@ -157,8 +157,17 @@ export default {
         sound4: new Howl({
             src: ['../src/sounds/cb.wav'],
             volume: 0.5,}),
-        sound5: new Howl({
-            src: ['../src/sounds/bd.wav'],
+        sound51: new Howl({
+            src: ['../src/sounds/chord11.wav'],
+            volume: 0.5,}),
+        sound52: new Howl({
+            src: ['../src/sounds/chord12.wav'],
+            volume: 0.5,}),
+        sound53: new Howl({
+            src: ['../src/sounds/chord13.wav'],
+            volume: 0.5,}),
+        sound54: new Howl({
+            src: ['../src/sounds/chord14.wav'],
             volume: 0.5,}),
         sound6: new Howl({
             src: ['../src/sounds/bd.wav'],
@@ -167,9 +176,9 @@ export default {
     }
   },
   mounted(){
-    this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound4, this.sound5, this.sound6)
+    this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound4, this.sound51, this.sound52, this.sound53, this.sound54, this.sound6)
     socket.on('playSounds', playSounds => {
-        for (let j = 0; j < 6; j++) {
+        for (let j = 0; j < 9; j++) {
             if(playSounds[j] == true){
                 this.sounds[j].play();
             }
