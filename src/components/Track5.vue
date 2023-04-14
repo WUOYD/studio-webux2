@@ -1,57 +1,30 @@
 <template>
   <div class="content">
-    <h1>Track 5</h1>
-    <div id="backbutton" @click="updateView(0)"></div>
-    <div class="trackInterface">
-      <div class="instrument"></div>
-      <div class="grid">
-        <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)"></div>
-        <div class="cell" v-for="item in items2" :id="item.id" :tile="item.tile" @click="updateClick2($event, item.tile)"></div>
-        <div class="cell" v-for="item in items3" :id="item.id" :tile="item.tile" @click="updateClick3($event, item.tile)"></div>
-        <div class="cell" v-for="item in items4" :id="item.id" :tile="item.tile" @click="updateClick4($event, item.tile)"></div>
-      </div>
-    </div>
+    <div class="grid">
+      <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)"></div>
+    </div>  
+    <div class="grid">
+      <div class="cell" v-for="item in items2" :id="item.id" :tile="item.tile" @click="updateClick2($event, item.tile)"></div>       
+    </div>  
+    <div class="grid">
+      <div class="cell" v-for="item in items3" :id="item.id" :tile="item.tile" @click="updateClick3($event, item.tile)"></div>
+    </div>  
+    <div class="grid">
+      <div class="cell" v-for="item in items4" :id="item.id" :tile="item.tile" @click="updateClick4($event, item.tile)"></div>
+    </div>  
   </div>
 </template>
 
 <style scoped>
-.trackInterface {
-  width: 100%;
-  height: 100%;
-  justify-items: stretch;
-  display: flex;
+
+.content{
+  gap: 15px;
 }
 
-.instrument {
-  height: 10%;
-  width: calc(100%/9);
-  border: 3px solid rgb(60, 255, 255);
-  display: flex;
-  box-sizing: border-box;
+.cell{
+  height: 13vh;
 }
 
-h1 {
-  width: 100%;
-  text-align: left;
-}
-
-.grid {
-  height: 10%;
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  box-sizing: border-box;
-}
-
-.selected {
-  background-color: #fff;
-}
-
-#backbutton {
-  background-color: aqua;
-  height: 10%;
-  width: 10%;
-}
 </style>
 
 <script>

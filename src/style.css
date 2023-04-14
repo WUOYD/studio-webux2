@@ -1,10 +1,11 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: white;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background: #130721;
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   height: 100vh;
@@ -14,6 +15,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url(assets/fonts/Poppins-Bold.ttf);
 }
 
 @keyframes gradient {
@@ -44,9 +50,10 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
-  margin-block-start: 0em !important;
-  margin-block-end: 0em !important;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 0;
 }
 
 p {
@@ -65,69 +72,84 @@ a:hover {
 }
 
 button {
-  background: transparent;
+  background: rgba(255, 255, 255, .2);
   color: white;
-  border: 2px solid white;
   font-size: 20px;
-  padding: 20px 40px;
-  text-transform: uppercase;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 15px;
-  ;
+  border-radius: 10px;
+  border: none;
+  min-width: 34px;
+  min-height: 34px;
 }
 
-button:hover {
-  background-color: white;
-  color: black;
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
+button.icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+  width: 34px;
 }
 
 #app {
-  height: 100%;
-  width: 80%;
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
 }
 
+/* tracks */
 .content {
   width: 100%;
-  height: 80%;
+  flex: 1;
   flex-direction: column;
   text-align: center;
-}
-
-#footer {
-  width: 100%;
-  height: 10%;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.grid {
+  display: flex;
+  gap: 15px;
+  padding-left: 50px;
+  position: relative;
 }
 
-.cell {
-  width: calc(100%/8);
-  height: 100%;
-  border: 3px solid #fff;
-  box-sizing: border-box;
+.grid::before{
+  content: '';
+  position: absolute;
+  height: 8px;
+  width: 8px;
+  background: white;
+  border-radius: 10px;
+  top: calc(50% - 4px);
+  left: 20px;
 }
 
-.selected {
-  background-color: #fff;
+
+.cell{
+  background: rgb(151, 71, 255, .3);
+  width: calc(100% / 8);
+  height: 40vh;
+  border-radius: 10px;
 }
+
+.cell.selected {
+  background: rgb(151, 71, 255, 1);
+}
+
 
 #board {
   width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+#footer {
+  width: 100%;
+  padding: 0px 20px 20px 20px;
+  box-sizing: border-box;
+  font-size: 11px;
+  letter-spacing: 1px;
 }

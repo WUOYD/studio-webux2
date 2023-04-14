@@ -1,16 +1,17 @@
 <template>
     <div id="header">
-        <h1>MashRoom</h1>
+        <button class="icon" @click="updateStatus()">
+          <img src="../assets/icons/icon-sound-on.svg" alt="sound on">
+        </button>
     </div>
 </template>
 
 <style scoped>
 
 #header{
+  padding: 20px 20px 0 20px;
   width: 100%;
-  height: 10%;
-  justify-content: center;
-  text-align: center;
+  box-sizing: border-box;
 }
 </style>
 

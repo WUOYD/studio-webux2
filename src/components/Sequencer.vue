@@ -1,74 +1,47 @@
 <template>
     <div class="content">
-        <div id="controls">
-            <img class="controlele" id="play" src="../assets/icons/play.svg" @click="updateStatus()">
-            <img class="controlele" id="stop" src="../assets/icons/stop.svg" @click="updateStatus()">
+        <div class="intro">
+            <h1>be part of the experience</h1>
+            <div class="color-container">
+                <div class="color-item locked"></div>
+                <div class="color-item selected"></div>
+                <div class="color-item"></div>
+                <div class="color-item"></div>
+                <div class="color-item"></div>
+                <div class="color-item"></div>
+                <div class="color-item locked"></div>
+                <div class="color-item"></div>
+            </div>
         </div>
         <div id="sequencer">
-            <div class="track" id="track1">
-                <div class="name" id="name1">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit1" @click="updateView(1)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute1">
-                    <p>Mute</p>
+            <div class="track" id="track1" @click="updateView(1)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
             </div>
-            <div class="track" id="track2">
-                <div class="name" id="name2">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit2" @click="updateView(2)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute2">
-                    <p>Mute</p>
+            <div class="track locked" id="track2" @click="updateView(2)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
             </div>
-            <div class="track" id="track3">
-                <div class="name" id="name3">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit3" @click="updateView(3)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute3">
-                    <p>Mute</p>
+            <div class="track" id="track3" @click="updateView(3)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-drum.svg" alt="icon-drum">
                 </div>
             </div>
-            <div class="track" id="track4">
-                <div class="name" id="name4">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit4" @click="updateView(4)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute4">
-                    <p>Mute</p>
+            <div class="track locked" id="track4" @click="updateView(4)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
             </div>
-            <div class="track" id="track5">
-                <div class="name" id="name5">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit5" @click="updateView(5)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute5">
-                    <p>Mute</p>
+            <div class="track locked" id="track5" @click="updateView(5)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-smile.svg" alt="icon-smile">
                 </div>
             </div>
-            <div class="track" id="track6">
-                <div class="name" id="name6">
-                    <p>Name</p>
-                </div>
-                <div class="edit" id="edit6" @click="updateView(6)">
-                    <p>Edit</p>
-                </div>
-                <div class="mute" id="mute6">
-                    <p>Mute</p>
+            <div class="track" id="track6" @click="updateView(6)">
+                <div class="icon" id="icon">
+                    <img src="../assets/icons/icon-uvo.svg" alt="icon-uvo">
                 </div>
             </div>
         </div>
@@ -76,66 +49,100 @@
 </template>
 
 <style scoped>
-#sequencer {
+.content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* left col */
+.intro{
+    width: 40vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.color-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 125px;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.color-item{
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    background: blue;
+    position: relative;
+}
+
+.color-item::before{
+    content: '';
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50px;
+}
+
+.color-item.locked::before{
+    background: black;
+}
+
+.color-item.selected::before{
+    border: 2px solid white;
+    height: 25px;
+    width: 25px;
+}
+
+
+/* sequencer */
+#sequencer{
+    width: 60vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    height: 90%;
+    gap: 15px;
 }
 
-.track {
-    width: calc(90% / 2);
-    height: 20%;
-    margin: auto;
-    border: 1px solid #fff;
-    justify-items: stretch;
-    display: grid;
-    box-sizing: border-box;
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-}
-
-.name {
-    grid-area: 1 / 1 / 2 / 3;
-    background-color: rgba(255, 255, 0, 0.5);
+.track{  
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #9747FF;
+    border: 2px solid #130721;
+    border-radius: 10px;
+    width: 25%;
+    padding: 30px 0;
 }
 
-.edit {
-    grid-area: 2 / 1 / 4 / 2;
-    background-color: rgba(90, 0, 255, 0.5);
+.track.locked{
+    background: rgba(255, 255, 255, .3);
+    position: relative;
+}
+
+.track.locked::after{
+    content: url('../assets/icons/icon-lock.svg');
+    position: absolute;
+    top: 7px;
+    right: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #130721;
+    height: 25px;
+    width: 27px;
+    padding-top: 2px;
+    border-radius: 20px;
 }
 
-.mute {
-    grid-area: 2 / 2 / 4 / 3;
-    background-color: rgba(255, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} 
-#controls{
-  width: 100%;
-  height: 10%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
- }
-.controlele{
-  width: 5%;
-  display: flex;
-  justify-content: center;
-  margin: 1rem;
-}
+
 </style> 
 
 <script>

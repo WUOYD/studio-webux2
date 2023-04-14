@@ -2,6 +2,7 @@
 import Sequencer from './components/Sequencer.vue'
 import Options from './components/Options.vue'
 import Header from './components/Header.vue'
+import HeaderTrack from './components/HeaderTrack.vue'
 import Footer from './components/Footer.vue'
 import Track1 from './components/Track1.vue'
 import Track2 from './components/Track2.vue'
@@ -12,7 +13,7 @@ import Track6 from './components/Track6.vue'
 </script>
 
 <template>
-  <Header />
+  <component :is="header"></component>
   <keep-alive>
     <component :is="comp"></component>
   </keep-alive>
@@ -32,12 +33,17 @@ export default {
     Track6,
     Options
   },
+  header: {
+    Header,
+    HeaderTrack
+  },
   created() {
     socket.connect();
   },
   data() {
     return {
       comp: "Sequencer",
+      header: "Header"
     }
   },
   mounted() {
@@ -70,6 +76,12 @@ export default {
   methods: {
     updateView(comp) {
       this.comp = comp
+      if(comp=="Sequencer"){
+        this.header = Header
+      }
+      else{
+        this.header = HeaderTrack
+      }
     }
   },
   beforeUnmount() {
