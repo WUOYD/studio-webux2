@@ -1,7 +1,7 @@
 <template>
     <div id="header">
         <button class="icon">
-          <img src="../assets/icons/icon-sound-on.svg" alt="sound on">
+          <img src="../assets/icons/icon-sound-on.svg" alt="sound on" @click="mute()">
         </button>
     </div>
 </template>
@@ -14,5 +14,17 @@
   box-sizing: border-box;
 }
 </style>
+
+<script>
+import { socket } from '../client'
+
+export default {
+  methods: {
+    mute() {
+      socket.emit("mute", "mute");
+    }
+  }
+}
+</script>
 
 

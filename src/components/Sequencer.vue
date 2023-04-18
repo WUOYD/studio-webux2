@@ -1,18 +1,5 @@
 <template>
     <div class="content">
-        <div class="intro">
-            <h1>be part of the experience</h1>
-            <div class="color-container">
-                <div class="color-item locked"></div>
-                <div class="color-item selected"></div>
-                <div class="color-item"></div>
-                <div class="color-item"></div>
-                <div class="color-item"></div>
-                <div class="color-item"></div>
-                <div class="color-item"></div>
-                <div class="color-item"></div>
-            </div>
-        </div>
         <div id="sequencer">
             <div class="track" id="track1" @click="updateView(1)">
                 <div class="icon" id="icon">
@@ -49,60 +36,15 @@
 </template>
 
 <style scoped>
-.content{
+.content {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-/* left col */
-.intro{
-    width: 40vw;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-.color-container{
-    display: flex;
-    flex-wrap: wrap;
-    width: 125px;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.color-item{
-    height: 20px;
-    width: 20px;
-    border-radius: 50px;
-    background: blue;
-    position: relative;
-}
-
-.color-item::before{
-    content: '';
-    position: absolute;
-    height: 10px;
-    width: 10px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50px;
-}
-
-.color-item.locked::before{
-    background: black;
-}
-
-.color-item.selected::before{
-    border: 2px solid white;
-    height: 25px;
-    width: 25px;
-}
-
 
 /* sequencer */
-#sequencer{
+#sequencer {
     width: 60vw;
     display: flex;
     flex-direction: row;
@@ -111,7 +53,7 @@
     gap: 15px;
 }
 
-.track{  
+.track {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,12 +64,12 @@
     padding: 30px 0;
 }
 
-.track.locked{
+.track.locked {
     background: rgba(255, 255, 255, .3);
     position: relative;
 }
 
-.track.locked::after{
+.track.locked::after {
     content: url('../assets/icons/icon-lock.svg');
     position: absolute;
     top: 7px;
@@ -141,71 +83,93 @@
     padding-top: 2px;
     border-radius: 20px;
 }
-
-
 </style> 
 
 <script>
-import { Howl } from 'howler'
+import { Howl, Howler } from 'howler'
 import { socket } from '../client'
 
 export default {
-  data() {
-    return {
-        sound1: new Howl({
-            src: ['../src/sounds/kick.wav'],
-            volume: 0.5,}),
-        sound2: new Howl({
-            src: ['../src/sounds/snare.wav'],
-            volume: 0.5,}),
-        sound3: new Howl({
-            src: ['../src/sounds/hat.wav'],
-            volume: 0.5,}),
-        sound4: new Howl({
-            src: ['../src/sounds/cowbell.wav'],
-            volume: 0.5,}),
-        sound51: new Howl({
-            src: ['../src/sounds/piano1.wav'],
-            volume: 0.5,}),
-        sound52: new Howl({
-            src: ['../src/sounds/piano2.wav'],
-            volume: 0.5,}),
-        sound53: new Howl({
-            src: ['../src/sounds/piano3.wav'],
-            volume: 0.5,}),
-        sound54: new Howl({
-            src: ['../src/sounds/piano4.wav'],
-            volume: 0.5,}),
-        sound61: new Howl({
-            src: ['../src/sounds/synth1.wav'],
-            volume: 0.5,}),
-        sound62: new Howl({
-            src: ['../src/sounds/synth2.wav'],
-            volume: 0.5,}),
-        sound63: new Howl({
-            src: ['../src/sounds/synth3.wav'],
-            volume: 0.5,}),
-        sound64: new Howl({
-            src: ['../src/sounds/synth4.wav'],
-            volume: 0.5,}),
-        sounds: [],
-    }
-  },
-  mounted(){
-    this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound4, this.sound51, this.sound52, this.sound53, this.sound54, this.sound61, this.sound62, this.sound63, this.sound64)
-    socket.on('playSounds', playSounds => {
-        for (let j = 0; j < 13; j++) {
-            if(playSounds[j] == true){
-                this.sounds[j].play();
-            }
+    data() {
+        return {
+            sound1: new Howl({
+                src: ['../src/sounds/kick.wav'],
+                volume: 0.5,
+            }),
+            sound2: new Howl({
+                src: ['../src/sounds/snare.wav'],
+                volume: 0.5,
+            }),
+            sound3: new Howl({
+                src: ['../src/sounds/hat.wav'],
+                volume: 0.5,
+            }),
+            sound4: new Howl({
+                src: ['../src/sounds/cowbell.wav'],
+                volume: 0.5,
+            }),
+            sound51: new Howl({
+                src: ['../src/sounds/piano1.wav'],
+                volume: 0.5,
+            }),
+            sound52: new Howl({
+                src: ['../src/sounds/piano2.wav'],
+                volume: 0.5,
+            }),
+            sound53: new Howl({
+                src: ['../src/sounds/piano3.wav'],
+                volume: 0.5,
+            }),
+            sound54: new Howl({
+                src: ['../src/sounds/piano4.wav'],
+                volume: 0.5,
+            }),
+            sound61: new Howl({
+                src: ['../src/sounds/synth1.wav'],
+                volume: 0.5,
+            }),
+            sound62: new Howl({
+                src: ['../src/sounds/synth2.wav'],
+                volume: 0.5,
+            }),
+            sound63: new Howl({
+                src: ['../src/sounds/synth3.wav'],
+                volume: 0.5,
+            }),
+            sound64: new Howl({
+                src: ['../src/sounds/synth4.wav'],
+                volume: 0.5,
+            }),
+            sounds: [],
+            muted: false,
         }
-    })
-  },
-  methods: {
-    updateView(comp) {
-        socket.emit("updateView", comp);
-        socket.emit("updateComp", comp);
+    },
+    mounted() {
+        this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound4, this.sound51, this.sound52, this.sound53, this.sound54, this.sound61, this.sound62, this.sound63, this.sound64)
+        socket.on('playSounds', playSounds => {
+            for (let j = 0; j < 13; j++) {
+                if (playSounds[j] == true) {
+                    this.sounds[j].play();
+                }
+            }
+        })
+        socket.on('muteClient', mute => {
+            if (this.muted == true) {
+                Howler.mute(false);
+                this.muted = false
+            }
+            else {
+                Howler.mute(true);
+                this.muted = true
+            }
+
+        })
+    },
+    methods: {
+        updateView(comp) {
+            socket.emit("updateView", comp);
+            socket.emit("updateComp", comp);
+        }
     }
-  }
 }
 </script>

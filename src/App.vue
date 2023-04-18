@@ -1,6 +1,6 @@
 <script setup>
 import Sequencer from './components/Sequencer.vue'
-import Options from './components/Options.vue'
+import Titlescreen from './components/Titlescreen.vue'
 import Header from './components/Header.vue'
 import HeaderTrack from './components/HeaderTrack.vue'
 import Footer from './components/Footer.vue'
@@ -13,6 +13,7 @@ import Track6 from './components/Track6.vue'
 </script>
 
 <template>
+  <Titlescreen />
     <Header v-if="header" />
     <HeaderTrack v-else />
     <component :is="comp"></component>
@@ -30,7 +31,6 @@ export default {
     Track4,
     Track5,
     Track6,
-    Options
   },
   header: {
     Header,

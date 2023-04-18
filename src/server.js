@@ -139,6 +139,10 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('updateComponentT64', track64)
   })
 
+  //Mute
+  socket.on('mute', mute => {
+    socket.emit('muteClient', mute)
+  })
 
   //Disconnect message
   socket.on('disconnect', () => {

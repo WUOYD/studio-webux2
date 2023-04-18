@@ -8,7 +8,7 @@
           <h1>MashRoom</h1>
         </div>
         <div class="btn-group">
-          <button class="icon" @click="updateStatus()">
+          <button class="icon" @click="mute()">
             <img src="../assets/icons/icon-sound-on.svg" alt="sound on">
           </button>
           <button class="icon" @click="updateStatus()">
@@ -48,6 +48,9 @@ export default {
   methods: {
     updateView(comp) {
       socket.emit("updateView", comp);
+    },
+    mute() {
+      socket.emit("mute", "mute");
     }
   }
 }
