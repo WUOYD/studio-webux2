@@ -1,92 +1,108 @@
 <template>
   <div class="content">
     <div class="grid">
-      <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)"></div>
-    </div>  
+      <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)">
+      </div>
+    </div>
     <div class="grid">
-      <div class="cell" v-for="item in items2" :id="item.id" :tile="item.tile" @click="updateClick2($event, item.tile)"></div>       
-    </div>  
+      <div class="cell" v-for="item in items2" :id="item.id" :tile="item.tile" @click="updateClick2($event, item.tile)">
+      </div>
+    </div>
     <div class="grid">
-      <div class="cell" v-for="item in items3" :id="item.id" :tile="item.tile" @click="updateClick3($event, item.tile)"></div>
-    </div>  
+      <div class="cell" v-for="item in items3" :id="item.id" :tile="item.tile" @click="updateClick3($event, item.tile)">
+      </div>
+    </div>
     <div class="grid">
-      <div class="cell" v-for="item in items4" :id="item.id" :tile="item.tile" @click="updateClick4($event, item.tile)"></div>
-    </div>  
+      <div class="cell" v-for="item in items4" :id="item.id" :tile="item.tile" @click="updateClick4($event, item.tile)">
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-
-.content{
+.content {
   gap: 15px;
 }
 
-.cell{
+.cell {
   height: 13vh;
 }
-
 </style>
 
 <script>
 import { socket } from '../client'
 
-socket.on("updateComponentT61", track => {
-  for (let index = 0; index < 8; index++) {
-    let index_id = "61" + index;
-    let element = document.getElementById(index_id);
-    if (track[index]) {
-      element.classList.add("selected");
+export default {
+  data() {
+    return {
+      items1: [{ id: 610, tile: 0 }, { id: 611, tile: 1 }, { id: 612, tile: 2 }, { id: 613, tile: 3 }, { id: 614, tile: 4 }, { id: 615, tile: 5 }, { id: 616, tile: 6 }, { id: 617, tile: 7 }],
+      items2: [{ id: 620, tile: 0 }, { id: 621, tile: 1 }, { id: 622, tile: 2 }, { id: 623, tile: 3 }, { id: 624, tile: 4 }, { id: 625, tile: 5 }, { id: 626, tile: 6 }, { id: 627, tile: 7 }],
+      items3: [{ id: 630, tile: 0 }, { id: 631, tile: 1 }, { id: 632, tile: 2 }, { id: 633, tile: 3 }, { id: 634, tile: 4 }, { id: 635, tile: 5 }, { id: 636, tile: 6 }, { id: 637, tile: 7 }],
+      items4: [{ id: 640, tile: 0 }, { id: 641, tile: 1 }, { id: 642, tile: 2 }, { id: 643, tile: 3 }, { id: 644, tile: 4 }, { id: 645, tile: 5 }, { id: 646, tile: 6 }, { id: 647, tile: 7 }],
+      mounted: false
     }
-    else if (!track[index]) {
-      element.classList.remove("selected");
-    }
-    else {}
-  }
-})
+  },
+  mounted() {
+    this.mounted = true
+    socket.on("updateComponentT61", track => {
+      for (let index = 0; index < 8; index++) {
+        let index_id = "61" + index;
+        let element = document.getElementById(index_id);
+        if (track[index]) {
+          element.classList.add("selected");
+        }
+        else if (!track[index]) {
+          element.classList.remove("selected");
+        }
+        else { }
+      }
+    })
 
-socket.on("updateComponentT62", track => {
-  for (let index = 0; index < 8; index++) {
-    let index_id = "62" + index;
-    let element = document.getElementById(index_id);
-    if (track[index]) {
-      element.classList.add("selected");
-    }
-    else if (!track[index]) {
-      element.classList.remove("selected");
-    }
-    else {}
-  }
-})
+    socket.on("updateComponentT62", track => {
+      for (let index = 0; index < 8; index++) {
+        let index_id = "62" + index;
+        let element = document.getElementById(index_id);
+        if (track[index]) {
+          element.classList.add("selected");
+        }
+        else if (!track[index]) {
+          element.classList.remove("selected");
+        }
+        else { }
+      }
+    })
 
-socket.on("updateComponentT63", track => {
-  for (let index = 0; index < 8; index++) {
-    let index_id = "63" + index;
-    let element = document.getElementById(index_id);
-    if (track[index]) {
-      element.classList.add("selected");
-    }
-    else if (!track[index]) {
-      element.classList.remove("selected");
-    }
-    else {}
-  }
-})
+    socket.on("updateComponentT63", track => {
+      for (let index = 0; index < 8; index++) {
+        let index_id = "63" + index;
+        let element = document.getElementById(index_id);
+        if (track[index]) {
+          element.classList.add("selected");
+        }
+        else if (!track[index]) {
+          element.classList.remove("selected");
+        }
+        else { }
+      }
+    })
 
-socket.on("updateComponentT64", track => {
-  for (let index = 0; index < 8; index++) {
-    let index_id = "64" + index;
-    let element = document.getElementById(index_id);
-    if (track[index]) {
-      element.classList.add("selected");
-    }
-    else if (!track[index]) {
-      element.classList.remove("selected");
-    }
-    else {}
-  }
-})
+    socket.on("updateComponentT64", track => {
+      for (let index = 0; index < 8; index++) {
+        let index_id = "64" + index;
+        console.log(index_id)
+        let element = document.getElementById(index_id);
+        if (track[index]) {
+          element.classList.add("selected");
+        }
+        else if (!track[index]) {
+          element.classList.remove("selected");
+        }
+        else { }
+      }
+    })
 
-socket.on("sequencerStep", bar => {
+    socket.on("sequencerStep", bar => {
+      if (this.mounted) {
         switch (bar) {
           case 0:
             document.getElementById(610).classList.add("activeCell")
@@ -169,18 +185,8 @@ socket.on("sequencerStep", bar => {
             document.getElementById(646).classList.remove("activeCell")
             break
         }
+      }
       })
-
-export default {
-  data() {
-    return {
-      items1: [{ id: 610, tile: 0}, { id: 611, tile: 1}, { id: 612, tile: 2}, { id: 613 , tile: 3}, { id: 614, tile: 4 }, { id: 615, tile: 5 }, { id: 616, tile: 6 }, { id: 617, tile: 7 }],
-      items2: [{ id: 620, tile: 0}, { id: 621, tile: 1}, { id: 622, tile: 2}, { id: 623 , tile: 3}, { id: 624, tile: 4 }, { id: 625, tile: 5 }, { id: 626, tile: 6 }, { id: 627, tile: 7 }],
-      items3: [{ id: 630, tile: 0}, { id: 631, tile: 1}, { id: 632, tile: 2}, { id: 633 , tile: 3}, { id: 634, tile: 4 }, { id: 635, tile: 5 }, { id: 636, tile: 6 }, { id: 637, tile: 7 }],
-      items4: [{ id: 640, tile: 0}, { id: 641, tile: 1}, { id: 642, tile: 2}, { id: 643 , tile: 3}, { id: 644, tile: 4 }, { id: 645, tile: 5 }, { id: 646, tile: 6 }, { id: 647, tile: 7 }],
-    }
-  },
-  mounted() {
   },
   methods: {
     updateClick1(element, index) {
@@ -202,6 +208,9 @@ export default {
     updateView(comp) {
       socket.emit("updateView", comp);
     }
+  },
+  beforeUnmount() {
+    this.mounted = false;
   }
 }
 </script>

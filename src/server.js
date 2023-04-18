@@ -171,6 +171,7 @@ setInterval(() => {
   } else {
   }
   sequencerStep()
+  io.emit('sequencerStep', bar);
 }, bpm_ms)
 
 function sequencerStep() {
@@ -179,5 +180,4 @@ function sequencerStep() {
   } else {
     bar++
   }
-  io.emit('sequencerStep', bar);
 }

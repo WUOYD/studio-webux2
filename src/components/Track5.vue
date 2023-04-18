@@ -39,9 +39,11 @@ export default {
       items2: [{ id: 520, tile: 0 }, { id: 521, tile: 1 }, { id: 522, tile: 2 }, { id: 523, tile: 3 }, { id: 524, tile: 4 }, { id: 525, tile: 5 }, { id: 526, tile: 6 }, { id: 527, tile: 7 }],
       items3: [{ id: 530, tile: 0 }, { id: 531, tile: 1 }, { id: 532, tile: 2 }, { id: 533, tile: 3 }, { id: 534, tile: 4 }, { id: 535, tile: 5 }, { id: 536, tile: 6 }, { id: 537, tile: 7 }],
       items4: [{ id: 540, tile: 0 }, { id: 541, tile: 1 }, { id: 542, tile: 2 }, { id: 543, tile: 3 }, { id: 544, tile: 4 }, { id: 545, tile: 5 }, { id: 546, tile: 6 }, { id: 547, tile: 7 }],
+      mounted: false
     }
   },
   mounted() {
+    this.mounted = true
     socket.on("updateComponentT51", track => {
       for (let index = 0; index < 8; index++) {
         let index_id = "51" + index;
@@ -100,6 +102,7 @@ export default {
     })
 
     socket.on("sequencerStep", bar => {
+      if (this.mounted) {
         switch (bar) {
           case 0:
             document.getElementById(510).classList.add("activeCell")
@@ -182,6 +185,7 @@ export default {
             document.getElementById(546).classList.remove("activeCell")
             break
         }
+      }
       })
   },
   methods: {
@@ -204,6 +208,9 @@ export default {
     updateView(comp) {
       socket.emit("updateView", comp);
     }
+  },
+  beforeUnmount() {
+    this.mounted = false;
   }
 }
 </script>

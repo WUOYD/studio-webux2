@@ -153,3 +153,7 @@ button.icon{
   font-size: 11px;
   letter-spacing: 1px;
 }
+
+.activeCell{
+  border-inline: 3px solid #ffff00;
+}

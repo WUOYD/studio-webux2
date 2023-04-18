@@ -15,10 +15,12 @@ import { socket } from '../client'
 export default {
   data() {
     return {
-      items: [{ id: 30, tile: 0 }, { id: 31, tile: 1 }, { id: 32, tile: 2 }, { id: 33, tile: 3 }, { id: 34, tile: 4 }, { id: 35, tile: 5 }, { id: 36, tile: 6 }, { id: 37, tile: 7 }]
+      items: [{ id: 30, tile: 0 }, { id: 31, tile: 1 }, { id: 32, tile: 2 }, { id: 33, tile: 3 }, { id: 34, tile: 4 }, { id: 35, tile: 5 }, { id: 36, tile: 6 }, { id: 37, tile: 7 }],
+      mounted: false
     }
   },
   mounted() {
+    this.mounted = true
     socket.on("updateComponentT3", track => {
       for (let index = 0; index < 8; index++) {
         let index_id = "3" + index;
@@ -33,6 +35,7 @@ export default {
       }
     })
       socket.on("sequencerStep", bar => {
+        if (this.mounted) {
         switch (bar) {
           case 0:
             document.getElementById(30).classList.add("activeCell")
@@ -67,6 +70,7 @@ export default {
             document.getElementById(36).classList.remove("activeCell")
             break
         }
+      }
       })
   },
   methods: {
@@ -77,6 +81,9 @@ export default {
     updateView(comp) {
       socket.emit("updateView", comp);
     }
+  },
+  beforeUnmount() {
+    this.mounted = false;
   }
 }
 </script>

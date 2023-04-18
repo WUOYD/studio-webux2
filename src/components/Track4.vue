@@ -14,10 +14,12 @@ import { socket } from '../client'
 export default {
   data() {
     return {
-      items: [{ id: 40, tile: 0 }, { id: 41, tile: 1 }, { id: 42, tile: 2 }, { id: 43, tile: 3 }, { id: 44, tile: 4 }, { id: 45, tile: 5 }, { id: 46, tile: 6 }, { id: 47, tile: 7 }]
+      items: [{ id: 40, tile: 0 }, { id: 41, tile: 1 }, { id: 42, tile: 2 }, { id: 43, tile: 3 }, { id: 44, tile: 4 }, { id: 45, tile: 5 }, { id: 46, tile: 6 }, { id: 47, tile: 7 }],
+      mounted: false
     }
   },
   mounted() {
+    this.mounted = true
     socket.on("updateComponentT4", track => {
       for (let index = 0; index < 8; index++) {
         let index_id = "4" + index;
@@ -33,6 +35,7 @@ export default {
     })
 
     socket.on("sequencerStep", bar => {
+      if (this.mounted) {
         switch (bar) {
           case 0:
             document.getElementById(40).classList.add("activeCell")
@@ -67,6 +70,7 @@ export default {
             document.getElementById(46).classList.remove("activeCell")
             break
         }
+      }
       })
   },
   methods: {
@@ -77,6 +81,9 @@ export default {
     updateView(comp) {
       socket.emit("updateView", comp);
     }
+  },
+  beforeUnmount() {
+    this.mounted = false;
   }
 }
 </script>

@@ -13,13 +13,9 @@ import Track6 from './components/Track6.vue'
 </script>
 
 <template>
-  <keep-alive>
     <Header v-if="header" />
     <HeaderTrack v-else />
-  </keep-alive>
-  <keep-alive>
     <component :is="comp"></component>
-  </keep-alive>
   <Footer />
 </template>
 
