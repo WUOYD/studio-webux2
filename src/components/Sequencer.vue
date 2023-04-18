@@ -1,32 +1,32 @@
 <template>
     <div class="content">
         <div id="sequencer">
-            <div class="track" id="track1" @click="updateView(1)">
+            <div class="track free" id="track1" @click="updateView(1)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
             </div>
-            <div class="track" id="track2" @click="updateView(2)">
+            <div class="track locked" id="track2" @click="updateView(2)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
             </div>
-            <div class="track" id="track3" @click="updateView(3)">
+            <div class="track free" id="track3" @click="updateView(3)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-drum.svg" alt="icon-drum">
                 </div>
             </div>
-            <div class="track" id="track4" @click="updateView(4)">
+            <div class="track locked" id="track4" @click="updateView(4)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
             </div>
-            <div class="track" id="track5" @click="updateView(5)">
+            <div class="track locked" id="track5" @click="updateView(5)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-smile.svg" alt="icon-smile">
                 </div>
             </div>
-            <div class="track" id="track6" @click="updateView(6)">
+            <div class="track free" id="track6" @click="updateView(6)">
                 <div class="icon" id="icon">
                     <img src="../assets/icons/icon-uvo.svg" alt="icon-uvo">
                 </div>
@@ -45,7 +45,7 @@
 
 /* sequencer */
 #sequencer {
-    width: 60vw;
+    width: 80vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -58,31 +58,16 @@
     justify-content: center;
     align-items: center;
     background: #9747FF;
-    border: 2px solid #130721;
     border-radius: 10px;
-    width: 25%;
     padding: 30px 0;
+    box-shadow: #9747FF 0px 0px 8px;
 }
 
 .track.locked {
     background: rgba(255, 255, 255, .3);
-    position: relative;
+    box-shadow: none;
 }
 
-.track.locked::after {
-    content: url('../assets/icons/icon-lock.svg');
-    position: absolute;
-    top: 7px;
-    right: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #130721;
-    height: 25px;
-    width: 27px;
-    padding-top: 2px;
-    border-radius: 20px;
-}
 </style> 
 
 <script>
