@@ -148,7 +148,7 @@ io.on('connection', (socket) => {
 
 // Listen on Port 3000
 server.listen(3000, () => {
-  console.log('listening on 127.0.0.1:3000/')
+  console.log('listening on port :3000/')
 })
 
 // Sequencer Interval
@@ -179,4 +179,5 @@ function sequencerStep() {
   } else {
     bar++
   }
+  io.emit('sequencerStep', bar);
 }

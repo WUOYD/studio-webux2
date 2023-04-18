@@ -5,7 +5,7 @@
         </button>
         <div class="title">
           <img src="../assets/icons/icon-fisch.svg" alt="icon">
-          <h1>rhythm</h1>
+          <h1>MashRoom</h1>
         </div>
         <div class="btn-group">
           <button class="icon" @click="updateStatus()">

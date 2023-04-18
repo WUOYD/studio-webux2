@@ -86,6 +86,91 @@ socket.on("updateComponentT64", track => {
   }
 })
 
+socket.on("sequencerStep", bar => {
+        switch (bar) {
+          case 0:
+            document.getElementById(610).classList.add("activeCell")
+            document.getElementById(617).classList.remove("activeCell")
+            document.getElementById(620).classList.add("activeCell")
+            document.getElementById(627).classList.remove("activeCell")
+            document.getElementById(630).classList.add("activeCell")
+            document.getElementById(637).classList.remove("activeCell")
+            document.getElementById(640).classList.add("activeCell")
+            document.getElementById(647).classList.remove("activeCell")
+            break
+          case 1:
+            document.getElementById(611).classList.add("activeCell")
+            document.getElementById(610).classList.remove("activeCell")
+            document.getElementById(621).classList.add("activeCell")
+            document.getElementById(620).classList.remove("activeCell")
+            document.getElementById(631).classList.add("activeCell")
+            document.getElementById(630).classList.remove("activeCell")
+            document.getElementById(641).classList.add("activeCell")
+            document.getElementById(640).classList.remove("activeCell")
+            break
+          case 2:
+            document.getElementById(612).classList.add("activeCell")
+            document.getElementById(611).classList.remove("activeCell")
+            document.getElementById(622).classList.add("activeCell")
+            document.getElementById(621).classList.remove("activeCell")
+            document.getElementById(632).classList.add("activeCell")
+            document.getElementById(631).classList.remove("activeCell")
+            document.getElementById(642).classList.add("activeCell")
+            document.getElementById(641).classList.remove("activeCell")
+            break
+          case 3:
+            document.getElementById(613).classList.add("activeCell")
+            document.getElementById(612).classList.remove("activeCell")
+            document.getElementById(623).classList.add("activeCell")
+            document.getElementById(622).classList.remove("activeCell")
+            document.getElementById(633).classList.add("activeCell")
+            document.getElementById(632).classList.remove("activeCell")
+            document.getElementById(643).classList.add("activeCell")
+            document.getElementById(642).classList.remove("activeCell")
+            break
+          case 4:
+            document.getElementById(614).classList.add("activeCell")
+            document.getElementById(613).classList.remove("activeCell")
+            document.getElementById(624).classList.add("activeCell")
+            document.getElementById(623).classList.remove("activeCell")
+            document.getElementById(634).classList.add("activeCell")
+            document.getElementById(633).classList.remove("activeCell")
+            document.getElementById(644).classList.add("activeCell")
+            document.getElementById(643).classList.remove("activeCell")
+            break
+          case 5:
+            document.getElementById(615).classList.add("activeCell")
+            document.getElementById(614).classList.remove("activeCell")
+            document.getElementById(625).classList.add("activeCell")
+            document.getElementById(624).classList.remove("activeCell")
+            document.getElementById(635).classList.add("activeCell")
+            document.getElementById(634).classList.remove("activeCell")
+            document.getElementById(645).classList.add("activeCell")
+            document.getElementById(644).classList.remove("activeCell")
+            break
+          case 6:
+            document.getElementById(616).classList.add("activeCell")
+            document.getElementById(615).classList.remove("activeCell")
+            document.getElementById(626).classList.add("activeCell")
+            document.getElementById(625).classList.remove("activeCell")
+            document.getElementById(636).classList.add("activeCell")
+            document.getElementById(635).classList.remove("activeCell")
+            document.getElementById(646).classList.add("activeCell")
+            document.getElementById(645).classList.remove("activeCell")
+            break
+          case 7:
+            document.getElementById(617).classList.add("activeCell")
+            document.getElementById(616).classList.remove("activeCell")
+            document.getElementById(627).classList.add("activeCell")
+            document.getElementById(626).classList.remove("activeCell")
+            document.getElementById(637).classList.add("activeCell")
+            document.getElementById(636).classList.remove("activeCell")
+            document.getElementById(647).classList.add("activeCell")
+            document.getElementById(646).classList.remove("activeCell")
+            break
+        }
+      })
+
 export default {
   data() {
     return {

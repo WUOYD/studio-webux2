@@ -13,7 +13,10 @@ import Track6 from './components/Track6.vue'
 </script>
 
 <template>
-  <component :is="header"></component>
+  <keep-alive>
+    <Header v-if="header" />
+    <HeaderTrack v-else />
+  </keep-alive>
   <keep-alive>
     <component :is="comp"></component>
   </keep-alive>
@@ -43,7 +46,7 @@ export default {
   data() {
     return {
       comp: "Sequencer",
-      header: "Header"
+      header: true
     }
   },
   mounted() {
@@ -77,10 +80,10 @@ export default {
     updateView(comp) {
       this.comp = comp
       if(comp=="Sequencer"){
-        this.header = Header
+        this.header = true
       }
       else{
-        this.header = HeaderTrack
+        this.header = false
       }
     }
   },

@@ -1,6 +1,6 @@
 <template>
     <div id="header">
-        <button class="icon" @click="updateStatus()">
+        <button class="icon">
           <img src="../assets/icons/icon-sound-on.svg" alt="sound on">
         </button>
     </div>
