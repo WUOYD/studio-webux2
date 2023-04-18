@@ -25,7 +25,11 @@ let track51 = [false, false, false, false, false, false, false, false]
 let track52 = [false, false, false, false, false, false, false, false]
 let track53 = [false, false, false, false, false, false, false, false]
 let track54 = [false, false, false, false, false, false, false, false]
-let track6 = [false, false, false, false, false, false, false, false]
+let track61 = [false, false, false, false, false, false, false, false]
+let track62 = [false, false, false, false, false, false, false, false]
+let track63 = [false, false, false, false, false, false, false, false]
+let track64 = [false, false, false, false, false, false, false, false]
+
 
 app.get('/', (req, res) => {
   res.sendFile('../index.html')
@@ -70,8 +74,17 @@ io.on('connection', (socket) => {
       case 54:
         socket.emit('updateComponentT54', track54)
         break
-      case 6:
-        socket.emit('updateComponentT6', track6)
+      case 61:
+        socket.emit('updateComponentT61', track61)
+        break
+      case 62:
+        socket.emit('updateComponentT62', track62)
+        break
+      case 63:
+        socket.emit('updateComponentT63', track63)
+        break
+      case 64:
+        socket.emit('updateComponentT64', track64)
         break
     }
   })
@@ -109,10 +122,23 @@ io.on('connection', (socket) => {
     track54[index] = !track54[index]
     socket.broadcast.emit('updateComponentT54', track54)
   })
-  socket.on('updateT6', (index) => {
-    track6[index] = !track6[index]
-    socket.broadcast.emit('updateComponentT6', track6)
+  socket.on('updateT61', (index) => {
+    track61[index] = !track61[index]
+    socket.broadcast.emit('updateComponentT61', track61)
   })
+  socket.on('updateT62', (index) => {
+    track62[index] = !track62[index]
+    socket.broadcast.emit('updateComponentT62', track62)
+  })
+  socket.on('updateT63', (index) => {
+    track63[index] = !track63[index]
+    socket.broadcast.emit('updateComponentT63', track63)
+  })
+  socket.on('updateT64', (index) => {
+    track64[index] = !track64[index]
+    socket.broadcast.emit('updateComponentT64', track64)
+  })
+
 
   //Disconnect message
   socket.on('disconnect', () => {
@@ -127,7 +153,7 @@ server.listen(3000, () => {
 
 // Sequencer Interval
 setInterval(() => {
-  let tracks = [track1, track2, track3, track4, track51, track52, track53, track54, track6]
+  let tracks = [track1, track2, track3, track4, track51, track52, track53, track54, track61, track62, track63, track64]
   if (playStatus == true) {
     let playSounds = [
       tracks[0][bar],

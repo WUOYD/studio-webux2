@@ -7,15 +7,6 @@
   </div>
 </template>
 
-<style scoped>
-.grid {
-  display: flex;
-  gap: 15px;
-  padding-left: 50px;
-}
-
-</style>
-
 <script>
 import { socket } from '../client'
 
