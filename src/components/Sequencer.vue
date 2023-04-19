@@ -6,42 +6,42 @@
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
-                <span>drums</span>
+                <span>bass</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track2" @click="updateView(2)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
-                <span>guitar</span>
+                <span>tom</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track3" @click="updateView(3)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-drum.svg" alt="icon-drum">
                 </div>
-                <span>bass</span>
+                <span>hihat</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track4" @click="updateView(4)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
-                <span>violin</span>
+                <span>keys</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track5" @click="updateView(5)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-smile.svg" alt="icon-smile">
                 </div>
-                <span>trumpet</span>
+                <span>synth</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track6" @click="updateView(6)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-uvo.svg" alt="icon-uvo">
                 </div>
-                <span>synth</span>
+                <span>bass</span>
                 <button class="text icon play sm">jam</button>
             </div>
         </div>
@@ -90,6 +90,7 @@ h1 {
     padding: 7px;
     box-shadow: var(--color-accent) 0px 0px 8px;
     height: 50vh;
+    max-height: 250px;
 }
 
 .track.locked {

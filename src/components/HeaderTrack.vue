@@ -4,7 +4,7 @@
 
         <div class="title">
           <img src="../assets/icons/icon-fisch.svg" alt="icon">
-          <h1>MashRoom</h1>
+          <h1>{{ title }}</h1>
         </div>
 
         <button class="icon trash sm" @click="reset()"></button>

@@ -231,6 +231,9 @@ button.icon.back::after{
   display: flex;
   justify-content: center;
   gap: 15px;
+  max-height: 600px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .content.synth,
@@ -333,7 +336,7 @@ button.icon.back::after{
 }
 
 .cell.selected {
-  background: rgb(151, 71, 255, 1);
+  background: var(--color-accent);
 }
 
 .synth .cell.selected::before{
