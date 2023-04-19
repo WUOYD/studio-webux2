@@ -12,8 +12,8 @@
                 <h2>chose which color you want to add</h2>
             </div>
             <div class="color-container">
-                <div class="color-item" id="lila"></div>
-                <div class="color-item selected" id="yellow"></div>
+                <div class="color-item selected" id="lila"></div>
+                <div class="color-item" id="yellow"></div>
                 <div class="color-item" id="orange"></div>
                 <div class="color-item" id="red"></div>
                 <div class="color-item" id="blue"></div>
