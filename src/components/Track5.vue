@@ -1,5 +1,5 @@
 <template>
-  <div class="content track rhythm">
+  <div class="content track synth">
     <div class="grid">
       <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)">
       </div>

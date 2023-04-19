@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content single">
     <div class="grid">
       <div class="cell" v-for="item in items" :id="item.id" :tile="item.tile" @click="updateClick($event, item.tile)">
       </div>
