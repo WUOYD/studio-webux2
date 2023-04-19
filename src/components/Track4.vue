@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="content track rhythm">
     <div class="grid">
       <div class="cell" v-for="item in items1" :id="item.id" :tile="item.tile" @click="updateClick1($event, item.tile)">
       </div>
@@ -18,16 +18,6 @@
     </div>
   </div>
 </template>
-
-<style scoped>
-.content {
-  gap: 15px;
-}
-
-.cell {
-  height: 13vh;
-}
-</style>
 
 <script>
 import { socket } from '../client'

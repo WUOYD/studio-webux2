@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="content sequencer">
         <h1>which Instrument do you want to play</h1>
         <div id="sequencer">
             <div class="track free" id="track1" @click="updateView(1)">
@@ -9,12 +9,12 @@
                 <span>drums</span>
                 <button class="text icon play sm">jam</button>
             </div>
-            <div class="track locked" id="track2" @click="updateView(2)">
+            <div class="track free" id="track2" @click="updateView(2)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
                 <span>guitar</span>
-                <button class="text icon user sm">jam</button>  
+                <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track3" @click="updateView(3)">
                 <div class="icon-wrapper" id="icon">
@@ -23,14 +23,14 @@
                 <span>bass</span>
                 <button class="text icon play sm">jam</button>
             </div>
-            <div class="track locked" id="track4" @click="updateView(4)">
+            <div class="track free" id="track4" @click="updateView(4)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
                 <span>violin</span>
                 <button class="text icon play sm">jam</button>
             </div>
-            <div class="track locked" id="track5" @click="updateView(5)">
+            <div class="track free" id="track5" @click="updateView(5)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-smile.svg" alt="icon-smile">
                 </div>
@@ -54,11 +54,15 @@
 </template>
 
 <style scoped>
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 0;
+
+.content.sequencer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  gap: 0;
+  padding: 20px 7vw 20px 7vw;
 }
 
 h1{
@@ -67,14 +71,14 @@ h1{
 
 /* sequencer */
 #sequencer {
-    width: 80vw;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin: 20px 0 10px 0;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0 15px 0;
 }
 
 .track {
@@ -82,7 +86,7 @@ h1{
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background: #9747FF;
+    background: var(--color-accent);
     border-radius: 10px;
     padding: 7px;
     box-shadow: #9747FF 0px 0px 8px;
