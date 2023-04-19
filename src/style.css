@@ -57,6 +57,7 @@
 }
 
 *{
+  font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
   letter-spacing: 2px;
 }
 
@@ -113,13 +114,29 @@ button {
   border: none;
 }
 
-button.text{
+button.sm{
+  padding: 10px;
+  font-size: 12px;
+}
+
+button.text:not(.sm){
   padding: 15px;
 }
 
 button.text.icon{
   padding-right: 50px;
   position: relative;
+}
+
+button.sm.text.icon{
+  padding-right: 40px
+}
+
+button.sm.text.icon::after{
+  height: 7px;
+  width: 7px;
+  border-radius: 8px;
+  right: 5px;
 }
 
 button.text.icon::after{

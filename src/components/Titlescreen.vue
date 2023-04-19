@@ -27,10 +27,13 @@
 
 <style scoped>
 .content{
+    display: none!important;
     position: relative;
     height: 100vh;
     width: 100vw;
+    z-index: 1;
 }
+
 
 /* ================== ANIMATION ====================== */
 
