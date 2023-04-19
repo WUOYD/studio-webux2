@@ -34,9 +34,9 @@ let track62 = [false, false, false, false, false, false, false, false]
 let track63 = [false, false, false, false, false, false, false, false]
 let track64 = [false, false, false, false, false, false, false, false]
 
-app.get('/', (req, res) => {
-  res.sendFile('../index.html')
-})
+// app.get('/', (req, res) => {
+//   res.sendFile('../index.html')
+// })
 
 app.use(express.static('public'))
 
