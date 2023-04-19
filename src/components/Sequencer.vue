@@ -45,7 +45,11 @@
                 <button class="text icon play sm">jam</button>
             </div>
         </div>
-        <h2>there are already 4 people jammin</h2>
+        <div class="session-count-wrapper">
+            <h2>there are already</h2>
+            <div><span>4</span><img src="../assets/icons/icon-session.svg" alt="session"></div>
+            <h2>people jammin</h2>
+        </div>
     </div>
 </template>
 
@@ -70,7 +74,7 @@ h1{
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin: 30px 0 10px 0;
+    margin: 20px 0 10px 0;
 }
 
 .track {
@@ -123,6 +127,35 @@ h1{
     top: -50%;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.session-count-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.session-count-wrapper>div{
+    background: rgba(151, 71, 255, .2);
+    padding: 7px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+    height: 20px;
+}
+
+.session-count-wrapper span{
+    font-size: 13px;
+    background: var(--color-accent);
+    border-radius: 30px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: .8;
+    margin-right: 7px;
 }
 
 </style> 
