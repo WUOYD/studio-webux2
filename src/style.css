@@ -187,21 +187,7 @@ button.text.icon.user::after{
 .grid {
   display: flex;
   gap: 15px;
-  padding-left: 50px;
-  position: relative;
 }
-
-.grid::before{
-  content: '';
-  position: absolute;
-  height: 8px;
-  width: 8px;
-  background: white;
-  border-radius: 10px;
-  top: calc(50% - 4px);
-  left: 20px;
-}
-
 
 .cell{
   background: rgb(151, 71, 255, .3);
