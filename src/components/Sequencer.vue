@@ -6,28 +6,28 @@
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
-                <span>violin</span>
+                <span>bass</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track2" @click="updateView(2)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
-                <span>guitar</span>
+                <span>tom</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track3" @click="updateView(3)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-drum.svg" alt="icon-drum">
                 </div>
-                <span>trumpet</span>
+                <span>hihat</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track4" @click="updateView(4)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
-                <span>drums</span>
+                <span>keys</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track5" @click="updateView(5)">
