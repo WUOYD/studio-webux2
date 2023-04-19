@@ -281,6 +281,20 @@ button.icon.back::after{
   height: 18px;
   width: 18px;
   border-radius: 30px;
+  position: relative;
+}
+
+.synth .cell::before{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0vw;
+  opacity: 0;
+  background: var(--color-accent);
+  border-radius: 20px;
+  transition: .4s;
 }
 
 .strings .cell{
@@ -321,6 +335,12 @@ button.icon.back::after{
 .cell.selected {
   background: rgb(151, 71, 255, 1);
 }
+
+.synth .cell.selected::before{
+  width: 13vw;
+  opacity: 1;
+}
+
 
 #board {
   width: 100%;
