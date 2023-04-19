@@ -35,7 +35,7 @@ let track63 = [false, false, false, false, false, false, false, false]
 let track64 = [false, false, false, false, false, false, false, false]
 
 app.get('/', (req, res) => {
-  res.sendFile('../index.html', { root: __dirname });
+  res.sendFile('index.html', { root: __dirname });
 })
 
 
