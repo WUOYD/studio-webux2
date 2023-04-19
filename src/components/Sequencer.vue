@@ -14,7 +14,7 @@
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
                 <span>guitar</span>
-                <button class="text icon play sm">jam</button>                
+                <button class="text icon user sm">jam</button>  
             </div>
             <div class="track free" id="track3" @click="updateView(3)">
                 <div class="icon-wrapper" id="icon">

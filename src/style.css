@@ -149,7 +149,7 @@ button.text.icon::after{
   right: 8px;
   padding: 10px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, .1);
+  background:rgba(255, 255, 255, .1);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -157,6 +157,10 @@ button.text.icon::after{
 
 button.text.icon.play::after{
   background-image: url('../assets/icons/play.svg');
+}
+
+button.text.icon.user::after{
+  background-image: url('../assets/icons/icon-user.svg');
 }
 
 
