@@ -155,14 +155,22 @@ button.text.icon::after{
   background-repeat: no-repeat;
 }
 
-button.text.icon.play::after{
+button.icon:not(.text){
+  height: 37.5px;
+  width: 37.5px;
+}
+
+button.icon.play::after{
   background-image: url('../assets/icons/play.svg');
 }
 
-button.text.icon.user::after{
+button.icon.user::after{
   background-image: url('../assets/icons/icon-user.svg');
 }
 
+button.icon.trash::after{
+  background-image: url('../assets/icons/icon-trash.svg');
+}
 
 
 #app {
@@ -170,6 +178,18 @@ button.text.icon.user::after{
   width: 100vw;
   display: flex;
   flex-direction: column;
+}
+
+#header{
+  padding: 20px 20px 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+}
+
+#header .btn-wrapper{
+  display: flex;
 }
 
 /* tracks */
@@ -184,22 +204,49 @@ button.text.icon.user::after{
   justify-content: center;
 }
 
+.content.track{
+  gap: 15px;
+}
+
 .grid {
   display: flex;
   gap: 15px;
 }
 
 .cell{
-  background: rgb(151, 71, 255, .3);
+  background: rgb(151, 71, 255, .2);
   width: calc(100% / 8);
   height: 40vh;
   border-radius: 10px;
+  position: relative;
+}
+
+.rhythm .cell{
+  height: 13vh;
+}
+
+.cell::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 3px;
+  border-radius: 15px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--color-accent);
+  opacity: 0;
+  transition: .2s;
 }
 
 .cell.selected {
   background: rgb(151, 71, 255, 1);
 }
 
+.cell.activeCell::after{
+  opacity: 1;
+}
 
 #board {
   width: 100%;
@@ -209,6 +256,7 @@ button.text.icon.user::after{
 }
 
 #footer {
+  display: none;
   width: 100%;
   padding: 0px 20px 20px 20px;
   box-sizing: border-box;
@@ -216,6 +264,3 @@ button.text.icon.user::after{
   letter-spacing: 1px;
 }
 
-.activeCell{
-  border-inline: 3px solid #ffff00;
-}
