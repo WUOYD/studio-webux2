@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       items: [{ id: 10, tile: 0 }, { id: 11, tile: 1 }, { id: 12, tile: 2 }, { id: 13, tile: 3 }, { id: 14, tile: 4 }, { id: 15, tile: 5 }, { id: 16, tile: 6 }, { id: 17, tile: 7 }],
-      mounted: false
+      mounted: false,
     }
   },
   mounted() {
