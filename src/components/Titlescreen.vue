@@ -108,14 +108,13 @@
 /* ================== INTRO ====================== */
 
 .intro {
-    /* display: none!important; */
     position: absolute;
     top: 0;
     left: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     height: 100vh;
     width: 100vw;
     background: var(--color-main);
@@ -125,7 +124,8 @@
 
 .text-wrapper {
     padding: 0 15vw;
-    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .text-wrapper h1 {
@@ -133,7 +133,7 @@
 }
 
 .text-wrapper p {
-    margin-bottom: 20vh;
+    margin-bottom: 50px;
 }
 
 .color-container {
@@ -142,7 +142,7 @@
     flex-wrap: wrap;
     gap: 15px;
     width: 100%;
-    margin: 15px 0;
+    margin: 20px 0 30px 0;
 }
 
 .color-item {
