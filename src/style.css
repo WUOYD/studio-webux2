@@ -231,9 +231,11 @@ button.icon.back::after{
   display: flex;
   justify-content: center;
   gap: 15px;
-  /* max-height: 600px;
-  max-width: 1200px;
-  margin: 0 auto; */
+  align-items: center;
+}
+
+.content.track{
+  max-height: 600px;
 }
 
 .content.synth,
@@ -249,6 +251,8 @@ button.icon.back::after{
 .grid {
   display: flex;
   gap: 15px;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .strings .grid{
