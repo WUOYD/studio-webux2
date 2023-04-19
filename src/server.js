@@ -16,6 +16,7 @@ let playStatus = true
 let bar = 0
 let bpm = 200
 let bpm_ms = 60000 / bpm
+let sockets = [];
 
 let track1 = [false, false, false, false, false, false, false, false]
 let track2 = [false, false, false, false, false, false, false, false]
@@ -42,9 +43,16 @@ app.use(express.static('public'))
 io.on('connection', (socket) => {
   //Server message & update
   console.log('new connection: ' + socket.id)
+  sockets.push(socket);
+  socket.emit("userCount", sockets.length)
+  socket.broadcast.emit("userCount", sockets.length )
+
+  // Join
+  socket.on('join', (join) => {
+    socket.emit('join', join)
+  })
 
   // Update View
-
   socket.on('updateView', (comp) => {
     socket.emit('updateClientView', comp)
   })
@@ -61,40 +69,22 @@ io.on('connection', (socket) => {
       case 3:
         socket.emit('updateComponentT3', track3)
         break
-      case 41:
+      case 4:
         socket.emit('updateComponentT41', track41)
-        break
-      case 42:
         socket.emit('updateComponentT42', track42)
-        break
-      case 43:
         socket.emit('updateComponentT43', track43)
-        break
-      case 44:
         socket.emit('updateComponentT44', track44)
         break
-      case 51:
+      case 5:
         socket.emit('updateComponentT51', track51)
-        break
-      case 52:
         socket.emit('updateComponentT52', track52)
-        break
-      case 53:
         socket.emit('updateComponentT53', track53)
-        break
-      case 54:
         socket.emit('updateComponentT54', track54)
         break
-      case 61:
+      case 6:
         socket.emit('updateComponentT61', track61)
-        break
-      case 62:
         socket.emit('updateComponentT62', track62)
-        break
-      case 63:
         socket.emit('updateComponentT63', track63)
-        break
-      case 64:
         socket.emit('updateComponentT64', track64)
         break
     }
@@ -221,6 +211,10 @@ io.on('connection', (socket) => {
   //Disconnect message
   socket.on('disconnect', () => {
     console.log('connection disconnected: ' + socket.id)
+    let i = sockets.indexOf(socket);
+    sockets.splice(i, 1);
+    socket.emit("userCount", sockets.length)
+    socket.broadcast.emit("userCount", sockets.length )
   })
 })
 

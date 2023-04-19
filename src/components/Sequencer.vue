@@ -47,7 +47,7 @@
         </div>
         <div class="session-count-wrapper">
             <h2>there are already</h2>
-            <div><span>4</span><img src="../assets/icons/icon-session.svg" alt="session"></div>
+            <div><span>{{ userCounter }}</span><img src="../assets/icons/icon-session.svg" alt="session"></div>
             <h2>people jammin</h2>
         </div>
     </div>
@@ -167,6 +167,8 @@ import { socket } from '../client'
 export default {
     data() {
         return {
+            muted: false,
+            userCounter: 0,
             sound1: new Howl({
                 src: ['../src/sounds/kick.wav'],
                 volume: 0.5,
@@ -227,8 +229,7 @@ export default {
                 src: ['../src/sounds/synth4.wav'],
                 volume: 0.5,
             }),
-            sounds: [],
-            muted: false,
+            sounds: []
         }
     },
     mounted() {
@@ -249,7 +250,9 @@ export default {
                 Howler.mute(true);
                 this.muted = true
             }
-
+        })
+        socket.on('userCount', count => {
+            this.userCounter = count;
         })
     },
     methods: {

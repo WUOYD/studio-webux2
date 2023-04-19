@@ -13,7 +13,7 @@ import Track6 from './components/Track6.vue'
 </script>
 
 <template>
-  <Titlescreen />
+  <Titlescreen v-if="title"/>
     <Header v-if="header" />
     <HeaderTrack v-else />
     <component :is="comp"></component>
@@ -42,7 +42,8 @@ export default {
   data() {
     return {
       comp: "Sequencer",
-      header: true
+      header: true,
+      title: true
     }
   },
   mounted() {
@@ -70,6 +71,9 @@ export default {
           this.updateView("Track6")
           break;
       }
+    })
+    socket.on('join', (join) => {
+      this.title = false;
     })
   },
   methods: {

@@ -211,9 +211,6 @@ export default {
     updateClick4(element, index) {
       element.target.classList.toggle("selected");
       socket.emit("updateT54", index);
-    },
-    updateView(comp) {
-      socket.emit("updateView", comp);
     }
   },
   beforeUnmount() {
