@@ -12,12 +12,10 @@
                 <h2>chose which color you want to add</h2>
             </div>
             <div class="color-container">
-                <div class="color-item selected" id="lila"></div>
-                <div class="color-item" id="yellow"></div>
-                <div class="color-item" id="orange"></div>
-                <div class="color-item" id="red"></div>
-                <div class="color-item" id="blue"></div>
-                <div class="color-item" id="lightblue"></div>
+
+                <div v-for="(item, index) in items" :key="index" :class="[{ 'selected': selectedItem === index }, 'color-item']" :id="[`color-${index}`]" @click="toggleSelectedItem(index)">
+                </div>
+
             </div>
             <button class="text icon play" @click="join()">join</button>
         </div>
@@ -171,27 +169,27 @@
     width: 25px;
 }
 
-#lila {
+#color-0 {
     background: #9747FF;
 }
 
-#yellow{
+#color-1{
     background: #FFC700;
 }
 
-#orange {
+#color-2 {
     background: #FF7B00;
 }
 
-#red{
+#color-3{
     background: #FF4768;
 }
 
-#blue{
+#color-4{
     background: #0038FF;
 }
 
-#lightblue{
+#color-5{
     background: #00C7F2;
 }
 </style> 
@@ -210,27 +208,47 @@ export default {
                 }
             })
             switch (color) {
-                case "lila":
+                case "color-0":
                     rootStyle.style.setProperty('--color-accent', '#9747FF');
+                    rootStyle.style.setProperty('--color-accent-light', '#9747ff33');
                     break
-                case "yellow":
+                case "color-1":
                     rootStyle.style.setProperty('--color-accent', '#FFC700');
+                    rootStyle.style.setProperty('--color-accent-light', '#FFC70033');
                     break
-                case "orange":
+                case "color-2":
                     rootStyle.style.setProperty('--color-accent', '#FF7B00');
+                    rootStyle.style.setProperty('--color-accent-light', '#FF7B0033');
                     break
-                case "red":
+                case "color-3":
                     rootStyle.style.setProperty('--color-accent', '#FF4768');
+                    rootStyle.style.setProperty('--color-accent-light', '#FF476833');
                     break
-                case "blue":
+                case "color-4":
                     rootStyle.style.setProperty('--color-accent', '#0038FF');
+                    rootStyle.style.setProperty('--color-accent-light', '#0038FF33');
                     break
-                case "lightblue":
+                case "color-5":
                     rootStyle.style.setProperty('--color-accent', '#00C7F2');
+                    rootStyle.style.setProperty('--color-accent-light', '#00C7F233');
                     break
             }
             socket.emit("join", "join");
+        },
+        toggleSelectedItem(index) {
+            if (this.selectedItem === index) {
+                this.selectedItem = null;
+            } else {
+                this.selectedItem = index;
+            }
         }
-    }
+
+    },
+    data() {
+        return {
+            items: ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5', 'Item 6'],
+            selectedItem: null
+        }
+  }
 }
 </script>

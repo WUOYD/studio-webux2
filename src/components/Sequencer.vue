@@ -89,7 +89,7 @@ h1{
     background: var(--color-accent);
     border-radius: 10px;
     padding: 7px;
-    box-shadow: #9747FF 0px 0px 8px;
+    box-shadow: var(--color-accent) 0px 0px 8px;
     height: 50vh;
 }
 
@@ -139,7 +139,7 @@ h1{
 }
 
 .session-count-wrapper>div{
-    background: rgba(151, 71, 255, .2);
+    background: var(--color-accent-light);
     padding: 7px;
     border-radius: 10px;
     display: flex;

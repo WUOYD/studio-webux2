@@ -3,6 +3,7 @@
   /* variables */
   --color-main: #130721;
   --color-accent: #9747FF;
+  --color-accent-light: #9747ff33;
 
 
   font-family: 'Poppins', system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -265,7 +266,7 @@ button.icon.back::after{
 }
 
 .cell{
-  background: rgb(151, 71, 255, .2);
+  background: var(--color-accent-light);
   width: calc(100% / 8);
   height: 12vh;
   border-radius: 10px;
