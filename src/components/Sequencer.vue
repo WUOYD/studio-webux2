@@ -54,31 +54,30 @@
 </template>
 
 <style scoped>
-
 .content.sequencer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-top: 0;
-  gap: 0;
-  padding: 20px 7vw 20px 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    gap: 0;
+    padding: 20px 7vw 20px 7vw;
 }
 
-h1{
+h1 {
     font-size: 16px;
 }
 
 /* sequencer */
 #sequencer {
-  width: 80vw;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  margin: 20px 0 15px 0;
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 15px 0;
 }
 
 .track {
@@ -100,45 +99,46 @@ h1{
     width: 75px;
 }
 
-.track .icon-wrapper{
+.track .icon-wrapper {
     display: flex;
     flex: 1;
     width: 100%;
 }
 
-.track .icon-wrapper img{
+.track .icon-wrapper img {
     width: 60px;
     margin: 40% auto 0 auto;
 }
 
-.track.free .icon-wrapper img{
+.track.free .icon-wrapper img {
     margin-top: 60%;
 }
-.track span{
+
+.track span {
     font-size: 12px;
     padding: 10px 0 20px 0;
 }
 
-.track.locked button{
+.track.locked button {
     background: none;
     font-size: 0;
     width: 0;
     height: 0;
 }
 
-.track.locked button::after{
+.track.locked button::after {
     right: 0;
     top: -50%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.session-count-wrapper{
+.session-count-wrapper {
     display: flex;
     align-items: center;
 }
 
-.session-count-wrapper>div{
+.session-count-wrapper>div {
     background: var(--color-accent-light);
     padding: 7px;
     border-radius: 10px;
@@ -148,7 +148,7 @@ h1{
     height: 20px;
 }
 
-.session-count-wrapper span{
+.session-count-wrapper span {
     font-size: 13px;
     background: var(--color-accent);
     border-radius: 30px;
@@ -161,7 +161,6 @@ h1{
     line-height: .8;
     margin-right: 7px;
 }
-
 </style> 
 
 <script>
@@ -186,51 +185,51 @@ export default {
                 volume: 0.5,
             }),
             sound41: new Howl({
-                src: ['../src/sounds/piano1.wav'],
+                src: ['../src/sounds/ch1.wav'],
                 volume: 0.5,
             }),
             sound42: new Howl({
-                src: ['../src/sounds/piano2.wav'],
+                src: ['../src/sounds/chi2.wav'],
                 volume: 0.5,
             }),
             sound43: new Howl({
-                src: ['../src/sounds/piano3.wav'],
+                src: ['../src/sounds/chi3.wav'],
                 volume: 0.5,
             }),
             sound44: new Howl({
-                src: ['../src/sounds/piano4.wav'],
+                src: ['../src/sounds/chi4.wav'],
                 volume: 0.5,
             }),
             sound51: new Howl({
-                src: ['../src/sounds/piano1.wav'],
+                src: ['../src/sounds/pluck1.wav'],
                 volume: 0.5,
             }),
             sound52: new Howl({
-                src: ['../src/sounds/piano2.wav'],
+                src: ['../src/sounds/pluck2.wav'],
                 volume: 0.5,
             }),
             sound53: new Howl({
-                src: ['../src/sounds/piano3.wav'],
+                src: ['../src/sounds/pluck3.wav'],
                 volume: 0.5,
             }),
             sound54: new Howl({
-                src: ['../src/sounds/piano4.wav'],
+                src: ['../src/sounds/pluck4.wav'],
                 volume: 0.5,
             }),
             sound61: new Howl({
-                src: ['../src/sounds/synth1.wav'],
+                src: ['../src/sounds/chord1.wav'],
                 volume: 0.5,
             }),
             sound62: new Howl({
-                src: ['../src/sounds/synth2.wav'],
+                src: ['../src/sounds/chord2.wav'],
                 volume: 0.5,
             }),
             sound63: new Howl({
-                src: ['../src/sounds/synth3.wav'],
+                src: ['../src/sounds/chord3.wav'],
                 volume: 0.5,
             }),
             sound64: new Howl({
-                src: ['../src/sounds/synth4.wav'],
+                src: ['../src/sounds/chord4.wav'],
                 volume: 0.5,
             }),
             sounds: []
