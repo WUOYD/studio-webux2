@@ -207,6 +207,8 @@ button.icon.trash::after{
 
 .content.track{
   gap: 15px;
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 .grid {
@@ -223,7 +225,7 @@ button.icon.trash::after{
 }
 
 .rhythm .cell{
-  height: 13vh;
+  height: 12vh;
 }
 
 .cell::after{
