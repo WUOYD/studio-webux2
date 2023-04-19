@@ -11,7 +11,7 @@
           <button class="icon" @click="mute()">
             <img src="../assets/icons/icon-sound-on.svg" alt="sound on">
           </button>
-          <button class="icon" @click="updateStatus()">
+          <button class="icon" @click="reset()">
             <img src="../assets/icons/icon-trash.svg" alt="sound on">
           </button>
         </div>
@@ -51,6 +51,9 @@ export default {
     },
     mute() {
       socket.emit("mute", "mute");
+    },
+    reset(){
+      socket.emit("reset", "reset");
     }
   }
 }

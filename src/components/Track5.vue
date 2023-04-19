@@ -45,59 +45,66 @@ export default {
   mounted() {
     this.mounted = true
     socket.on("updateComponentT51", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "51" + index;
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "51" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
 
     socket.on("updateComponentT52", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "52" + index;
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "52" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
 
     socket.on("updateComponentT53", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "53" + index;
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "53" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
 
     socket.on("updateComponentT54", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "54" + index;
-        console.log(index_id)
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "54" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
 
@@ -186,7 +193,7 @@ export default {
             break
         }
       }
-      })
+    })
   },
   methods: {
     updateClick1(element, index) {
