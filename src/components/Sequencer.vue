@@ -1,36 +1,54 @@
 <template>
     <div class="content">
+        <h1>which Instrument do you want to play</h1>
         <div id="sequencer">
-            <div class="track" id="track1" @click="updateView(1)">
-                <div class="icon" id="icon">
+            <div class="track free" id="track1" @click="updateView(1)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
+                <span>drums</span>
+                <button class="text icon play sm">jam</button>
             </div>
-            <div class="track" id="track2" @click="updateView(2)">
-                <div class="icon" id="icon">
+            <div class="track locked" id="track2" @click="updateView(2)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
+                <span>guitar</span>
+                <button class="text icon user sm">jam</button>  
             </div>
-            <div class="track" id="track3" @click="updateView(3)">
-                <div class="icon" id="icon">
+            <div class="track free" id="track3" @click="updateView(3)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-drum.svg" alt="icon-drum">
                 </div>
+                <span>bass</span>
+                <button class="text icon play sm">jam</button>
             </div>
-            <div class="track" id="track4" @click="updateView(4)">
-                <div class="icon" id="icon">
+            <div class="track locked" id="track4" @click="updateView(4)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-fisch.svg" alt="icon-fisch">
                 </div>
+                <span>violin</span>
+                <button class="text icon play sm">jam</button>
             </div>
-            <div class="track" id="track5" @click="updateView(5)">
-                <div class="icon" id="icon">
+            <div class="track locked" id="track5" @click="updateView(5)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-smile.svg" alt="icon-smile">
                 </div>
+                <span>trumpet</span>
+                <button class="text icon play sm">jam</button>
             </div>
-            <div class="track" id="track6" @click="updateView(6)">
-                <div class="icon" id="icon">
+            <div class="track free" id="track6" @click="updateView(6)">
+                <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-uvo.svg" alt="icon-uvo">
                 </div>
+                <span>synth</span>
+                <button class="text icon play sm">jam</button>
             </div>
+        </div>
+        <div class="session-count-wrapper">
+            <h2>there are already</h2>
+            <div><span>4</span><img src="../assets/icons/icon-session.svg" alt="session"></div>
+            <h2>people jammin</h2>
         </div>
     </div>
 </template>
@@ -38,51 +56,108 @@
 <style scoped>
 .content {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    padding-top: 0;
 }
 
+h1{
+    font-size: 16px;
+}
 
 /* sequencer */
 #sequencer {
-    width: 60vw;
+    width: 80vw;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 15px;
+    margin: 20px 0 10px 0;
 }
 
 .track {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     background: #9747FF;
-    border: 2px solid #130721;
     border-radius: 10px;
-    width: 25%;
-    padding: 30px 0;
+    padding: 7px;
+    box-shadow: #9747FF 0px 0px 8px;
+    height: 50vh;
 }
 
 .track.locked {
-    background: rgba(255, 255, 255, .3);
-    position: relative;
+    background: rgba(255, 255, 255, .2);
+    box-shadow: none;
+    height: 45vh;
+    width: 75px;
 }
 
-.track.locked::after {
-    content: url('../assets/icons/icon-lock.svg');
-    position: absolute;
-    top: 7px;
-    right: 7px;
+.track .icon-wrapper{
+    display: flex;
+    flex: 1;
+    width: 100%;
+}
+
+.track .icon-wrapper img{
+    width: 60px;
+    margin: 40% auto 0 auto;
+}
+
+.track.free .icon-wrapper img{
+    margin-top: 60%;
+}
+.track span{
+    font-size: 12px;
+    padding: 10px 0 20px 0;
+}
+
+.track.locked button{
+    background: none;
+    font-size: 0;
+    width: 0;
+    height: 0;
+}
+
+.track.locked button::after{
+    right: 0;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.session-count-wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.session-count-wrapper>div{
+    background: rgba(151, 71, 255, .2);
+    padding: 7px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin: 0 15px;
+    height: 20px;
+}
+
+.session-count-wrapper span{
+    font-size: 13px;
+    background: var(--color-accent);
+    border-radius: 30px;
+    height: 20px;
+    width: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #130721;
-    height: 25px;
-    width: 27px;
-    padding-top: 2px;
-    border-radius: 20px;
+    text-align: center;
+    line-height: .8;
+    margin-right: 7px;
 }
+
 </style> 
 
 <script>
