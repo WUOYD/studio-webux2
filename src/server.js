@@ -11,8 +11,6 @@ const io = new Server(server, {
   },
 })
 
-let playStatus = true
-
 let bar = 0
 let bpm = 200
 let bpm_ms = 60000 / bpm
@@ -47,7 +45,7 @@ io.on('connection', (socket) => {
   console.log('new connection: ' + socket.id)
   sockets.push(socket);
   socket.emit("userCount", sockets.length)
-  socket.broadcast.emit("userCount", sockets.length )
+  socket.broadcast.emit("userCount", sockets.length)
 
   // Join
   socket.on('join', (join) => {
@@ -180,7 +178,6 @@ io.on('connection', (socket) => {
     socket.emit('updateComponentT2', track2)
     socket.emit('updateComponentT3', track3)
     socket.emit('updateComponentT41', track41)
-    socket.emit('updateComponentT41', track41)
     socket.emit('updateComponentT42', track42)
     socket.emit('updateComponentT43', track43)
     socket.emit('updateComponentT44', track44)
@@ -195,7 +192,6 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('updateComponentT1', track1)
     socket.broadcast.emit('updateComponentT2', track2)
     socket.broadcast.emit('updateComponentT3', track3)
-    socket.broadcast.emit('updateComponentT41', track41)
     socket.broadcast.emit('updateComponentT41', track41)
     socket.broadcast.emit('updateComponentT42', track42)
     socket.broadcast.emit('updateComponentT43', track43)
@@ -216,7 +212,7 @@ io.on('connection', (socket) => {
     let i = sockets.indexOf(socket);
     sockets.splice(i, 1);
     socket.emit("userCount", sockets.length)
-    socket.broadcast.emit("userCount", sockets.length )
+    socket.broadcast.emit("userCount", sockets.length)
   })
 })
 
@@ -244,24 +240,13 @@ setInterval(() => {
     track63,
     track64,
   ]
-  if (playStatus == true) {
-    let playSounds = [
-      tracks[0][bar],
-      tracks[1][bar],
-      tracks[2][bar],
-      tracks[3][bar],
-      tracks[4][bar],
-      tracks[5][bar],
-      tracks[6][bar],
-      tracks[7][bar],
-      tracks[8][bar],
-    ]
-    io.emit('playSounds', playSounds)
-  } else if (playStatus == false) {
-  } else {
+  let playSounds = []
+  for (let i = 0; i < tracks.length; i++) {
+    playSounds.push(tracks[i][bar])
   }
-  sequencerStep()
+  io.emit('playSounds', playSounds)
   io.emit('sequencerStep', bar)
+  sequencerStep()
 }, bpm_ms)
 
 function sequencerStep() {

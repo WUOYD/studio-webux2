@@ -174,63 +174,63 @@ export default {
             userCounter: 0,
             sound1: new Howl({
                 src: ['../src/sounds/kick.wav'],
-                volume: 0.5,
+                volume: 0.4,
             }),
             sound2: new Howl({
                 src: ['../src/sounds/snare.wav'],
-                volume: 0.5,
+                volume: 0.3,
             }),
             sound3: new Howl({
                 src: ['../src/sounds/hat.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound41: new Howl({
                 src: ['../src/sounds/ch1.wav'],
-                volume: 0.5,
+                volume: 0.3,
             }),
             sound42: new Howl({
                 src: ['../src/sounds/chi2.wav'],
-                volume: 0.5,
+                volume: 0.3,
             }),
             sound43: new Howl({
                 src: ['../src/sounds/chi3.wav'],
-                volume: 0.5,
+                volume: 0.3,
             }),
             sound44: new Howl({
                 src: ['../src/sounds/chi4.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound51: new Howl({
                 src: ['../src/sounds/pluck1.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound52: new Howl({
                 src: ['../src/sounds/pluck2.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound53: new Howl({
                 src: ['../src/sounds/pluck3.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound54: new Howl({
                 src: ['../src/sounds/pluck4.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound61: new Howl({
                 src: ['../src/sounds/chord1.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound62: new Howl({
                 src: ['../src/sounds/chord2.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound63: new Howl({
                 src: ['../src/sounds/chord3.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sound64: new Howl({
                 src: ['../src/sounds/chord4.wav'],
-                volume: 0.5,
+                volume: 0.2,
             }),
             sounds: []
         }
@@ -238,10 +238,12 @@ export default {
     mounted() {
         this.sounds.push(this.sound1, this.sound2, this.sound3, this.sound41, this.sound42, this.sound43, this.sound44, this.sound51, this.sound52, this.sound53, this.sound54, this.sound61, this.sound62, this.sound63, this.sound64)
         socket.on('playSounds', playSounds => {
-            for (let j = 0; j < 17; j++) {
+            for (let j = 0; j < 15; j++) {
+                console.log(playSounds)
                 if (playSounds[j] == true) {
                     this.sounds[j].play();
                 }
+                else { }
             }
         })
         socket.on('muteClient', mute => {
