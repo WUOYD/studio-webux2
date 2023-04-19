@@ -1,8 +1,7 @@
 <template>
     <div id="header">
-        <button class="icon">
-          <img src="../assets/icons/icon-sound-on.svg" alt="sound on" @click="mute()">
-        </button>
+      <img src="../assets/logo/mashroom-logo-sm.svg" alt="logo">
+      <button class="text icon play sm">sound on</button>
     </div>
 </template>
 
@@ -12,6 +11,8 @@
   padding: 20px 20px 0 20px;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
 
