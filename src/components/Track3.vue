@@ -22,20 +22,22 @@ export default {
   mounted() {
     this.mounted = true
     socket.on("updateComponentT3", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "3" + index;
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "3" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
-      socket.on("sequencerStep", bar => {
-        if (this.mounted) {
+    socket.on("sequencerStep", bar => {
+      if (this.mounted) {
         switch (bar) {
           case 0:
             document.getElementById(30).classList.add("activeCell")
@@ -71,7 +73,7 @@ export default {
             break
         }
       }
-      })
+    })
   },
   methods: {
     updateClick(element, index) {

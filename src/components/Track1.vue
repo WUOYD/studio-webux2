@@ -20,16 +20,18 @@ export default {
   mounted() {
     this.mounted = true
     socket.on("updateComponentT1", track => {
-      for (let index = 0; index < 8; index++) {
-        let index_id = "1" + index;
-        let element = document.getElementById(index_id);
-        if (track[index]) {
-          element.classList.add("selected");
+      if (this.mounted == true) {
+        for (let index = 0; index < 8; index++) {
+          let index_id = "1" + index;
+          let element = document.getElementById(index_id);
+          if (track[index]) {
+            element.classList.add("selected");
+          }
+          else if (!track[index]) {
+            element.classList.remove("selected");
+          }
+          else { }
         }
-        else if (!track[index]) {
-          element.classList.remove("selected");
-        }
-        else { }
       }
     })
     socket.on("sequencerStep", bar => {

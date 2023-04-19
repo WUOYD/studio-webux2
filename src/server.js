@@ -20,7 +20,10 @@ let bpm_ms = 60000 / bpm
 let track1 = [false, false, false, false, false, false, false, false]
 let track2 = [false, false, false, false, false, false, false, false]
 let track3 = [false, false, false, false, false, false, false, false]
-let track4 = [false, false, false, false, false, false, false, false]
+let track41 = [false, false, false, false, false, false, false, false]
+let track42 = [false, false, false, false, false, false, false, false]
+let track43 = [false, false, false, false, false, false, false, false]
+let track44 = [false, false, false, false, false, false, false, false]
 let track51 = [false, false, false, false, false, false, false, false]
 let track52 = [false, false, false, false, false, false, false, false]
 let track53 = [false, false, false, false, false, false, false, false]
@@ -29,7 +32,6 @@ let track61 = [false, false, false, false, false, false, false, false]
 let track62 = [false, false, false, false, false, false, false, false]
 let track63 = [false, false, false, false, false, false, false, false]
 let track64 = [false, false, false, false, false, false, false, false]
-
 
 app.get('/', (req, res) => {
   res.sendFile('../index.html')
@@ -59,8 +61,17 @@ io.on('connection', (socket) => {
       case 3:
         socket.emit('updateComponentT3', track3)
         break
-      case 4:
-        socket.emit('updateComponentT4', track4)
+      case 41:
+        socket.emit('updateComponentT41', track41)
+        break
+      case 42:
+        socket.emit('updateComponentT42', track42)
+        break
+      case 43:
+        socket.emit('updateComponentT43', track43)
+        break
+      case 44:
+        socket.emit('updateComponentT44', track44)
         break
       case 51:
         socket.emit('updateComponentT51', track51)
@@ -102,9 +113,21 @@ io.on('connection', (socket) => {
     track3[index] = !track3[index]
     socket.broadcast.emit('updateComponentT3', track3)
   })
-  socket.on('updateT4', (index) => {
-    track4[index] = !track4[index]
-    socket.broadcast.emit('updateComponentT4', track4)
+  socket.on('updateT41', (index) => {
+    track41[index] = !track41[index]
+    socket.broadcast.emit('updateComponentT41', track41)
+  })
+  socket.on('updateT42', (index) => {
+    track42[index] = !track42[index]
+    socket.broadcast.emit('updateComponentT42', track42)
+  })
+  socket.on('updateT43', (index) => {
+    track43[index] = !track43[index]
+    socket.broadcast.emit('updateComponentT43', track43)
+  })
+  socket.on('updateT44', (index) => {
+    track44[index] = !track44[index]
+    socket.broadcast.emit('updateComponentT44', track44)
   })
   socket.on('updateT51', (index) => {
     track51[index] = !track51[index]
@@ -140,8 +163,59 @@ io.on('connection', (socket) => {
   })
 
   //Mute
-  socket.on('mute', mute => {
+  socket.on('mute', (mute) => {
     socket.emit('muteClient', mute)
+  })
+
+  //Reset
+  socket.on('reset', (reset) => {
+    track1 = [false, false, false, false, false, false, false, false]
+    track2 = [false, false, false, false, false, false, false, false]
+    track3 = [false, false, false, false, false, false, false, false]
+    track41 = [false, false, false, false, false, false, false, false]
+    track42 = [false, false, false, false, false, false, false, false]
+    track43 = [false, false, false, false, false, false, false, false]
+    track44 = [false, false, false, false, false, false, false, false]
+    track51 = [false, false, false, false, false, false, false, false]
+    track52 = [false, false, false, false, false, false, false, false]
+    track53 = [false, false, false, false, false, false, false, false]
+    track54 = [false, false, false, false, false, false, false, false]
+    track61 = [false, false, false, false, false, false, false, false]
+    track62 = [false, false, false, false, false, false, false, false]
+    track63 = [false, false, false, false, false, false, false, false]
+    track64 = [false, false, false, false, false, false, false, false]
+    socket.emit('updateComponentT1', track1)
+    socket.emit('updateComponentT2', track2)
+    socket.emit('updateComponentT3', track3)
+    socket.emit('updateComponentT41', track41)
+    socket.emit('updateComponentT41', track41)
+    socket.emit('updateComponentT42', track42)
+    socket.emit('updateComponentT43', track43)
+    socket.emit('updateComponentT44', track44)
+    socket.emit('updateComponentT51', track51)
+    socket.emit('updateComponentT52', track52)
+    socket.emit('updateComponentT53', track53)
+    socket.emit('updateComponentT54', track54)
+    socket.emit('updateComponentT61', track61)
+    socket.emit('updateComponentT62', track62)
+    socket.emit('updateComponentT63', track63)
+    socket.emit('updateComponentT64', track64)
+    socket.broadcast.emit('updateComponentT1', track1)
+    socket.broadcast.emit('updateComponentT2', track2)
+    socket.broadcast.emit('updateComponentT3', track3)
+    socket.broadcast.emit('updateComponentT41', track41)
+    socket.broadcast.emit('updateComponentT41', track41)
+    socket.broadcast.emit('updateComponentT42', track42)
+    socket.broadcast.emit('updateComponentT43', track43)
+    socket.broadcast.emit('updateComponentT44', track44)
+    socket.broadcast.emit('updateComponentT51', track51)
+    socket.broadcast.emit('updateComponentT52', track52)
+    socket.broadcast.emit('updateComponentT53', track53)
+    socket.broadcast.emit('updateComponentT54', track54)
+    socket.broadcast.emit('updateComponentT61', track61)
+    socket.broadcast.emit('updateComponentT62', track62)
+    socket.broadcast.emit('updateComponentT63', track63)
+    socket.broadcast.emit('updateComponentT64', track64)
   })
 
   //Disconnect message
@@ -157,7 +231,23 @@ server.listen(3000, () => {
 
 // Sequencer Interval
 setInterval(() => {
-  let tracks = [track1, track2, track3, track4, track51, track52, track53, track54, track61, track62, track63, track64]
+  let tracks = [
+    track1,
+    track2,
+    track3,
+    track41,
+    track42,
+    track43,
+    track44,
+    track51,
+    track52,
+    track53,
+    track54,
+    track61,
+    track62,
+    track63,
+    track64,
+  ]
   if (playStatus == true) {
     let playSounds = [
       tracks[0][bar],
@@ -175,7 +265,7 @@ setInterval(() => {
   } else {
   }
   sequencerStep()
-  io.emit('sequencerStep', bar);
+  io.emit('sequencerStep', bar)
 }, bpm_ms)
 
 function sequencerStep() {
