@@ -90,6 +90,7 @@ h1 {
     padding: 7px;
     box-shadow: var(--color-accent) 0px 0px 8px;
     height: 50vh;
+    max-height: 250px;
 }
 
 .track.locked {
