@@ -140,7 +140,7 @@ button.sm.text.icon::after{
   right: 5px;
 }
 
-button.text.icon::after{
+button.icon::after{
   content: '';
   position: absolute;
   height: 10px;
@@ -152,27 +152,45 @@ button.text.icon::after{
   border-radius: 10px;
   background:rgba(255, 255, 255, .1);
   background-position: center;
-  background-size: contain;
+  background-size: 50%;
   background-repeat: no-repeat;
 }
 
 button.icon:not(.text){
   height: 37.5px;
   width: 37.5px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button.icon:not(.text)::after{
+  background-color:rgba(255, 255, 255, .0);
+  right: auto;
 }
 
 button.icon.play::after{
-  background-image: url('../assets/icons/play.svg');
+  background-image: url('assets/icons/icon-play.svg');
+  background-position: 55% 50%;
+}
+
+button.icon.sound::after{
+  background-image: url('assets/icons/icon-sound.svg');
 }
 
 button.icon.user::after{
-  background-image: url('../assets/icons/icon-user.svg');
+  background-image: url('assets/icons/icon-user.svg');
 }
 
 button.icon.trash::after{
-  background-image: url('../assets/icons/icon-trash.svg');
+  background-image: url('assets/icons/icon-trash.svg');
 }
 
+button.icon.back::after{
+  background-image: url('assets/icons/icon-back.svg');
+  background-size: auto;
+}
 
 #app {
   height: 100vh;
@@ -193,9 +211,15 @@ button.icon.trash::after{
   display: flex;
 }
 
+#header .btn-wrapper .sound{
+  margin-right: 10px;
+}
+
+
 /* ===================================== 
-                tracks 
+              tracks 
 ======================================*/
+
 .content {
   width: 100%;
   flex: 1;
