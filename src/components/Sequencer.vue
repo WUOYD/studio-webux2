@@ -186,7 +186,7 @@ export default {
                 volume: 0.2,
             }),
             sound41: new Howl({
-                src: ['../src/sounds/ch1.wav'],
+                src: ['../src/sounds/chi1.wav'],
                 volume: 0.3,
             }),
             sound42: new Howl({
