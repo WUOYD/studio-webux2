@@ -6,14 +6,14 @@
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-boob.svg" alt="icon-boob">
                 </div>
-                <span>bass</span>
+                <span>kick</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track2" @click="updateView(2)">
                 <div class="icon-wrapper" id="icon">
                     <img src="../assets/icons/icon-devil.svg" alt="icon-devil">
                 </div>
-                <span>tom</span>
+                <span>snare</span>
                 <button class="text icon play sm">jam</button>
             </div>
             <div class="track free" id="track3" @click="updateView(3)">
