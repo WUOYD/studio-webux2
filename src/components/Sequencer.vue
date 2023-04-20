@@ -218,19 +218,19 @@ export default {
                 volume: 0.2,
             }),
             sound61: new Howl({
-                src: ['../src/sounds/chord1.wav'],
+                src: ['../src/sounds/bass1.wav'],
                 volume: 0.2,
             }),
             sound62: new Howl({
-                src: ['../src/sounds/chord2.wav'],
+                src: ['../src/sounds/bass2.wav'],
                 volume: 0.2,
             }),
             sound63: new Howl({
-                src: ['../src/sounds/chord3.wav'],
+                src: ['../src/sounds/bass3.wav'],
                 volume: 0.2,
             }),
             sound64: new Howl({
-                src: ['../src/sounds/chord4.wav'],
+                src: ['../src/sounds/bass4.wav'],
                 volume: 0.2,
             }),
             sounds: []
