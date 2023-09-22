@@ -6,7 +6,7 @@ Requirements: Node.js
 
 1. Download repo
 
-2. Start node server in console: "node src/server.js"
+2. Start node server in console: "node start -- --host"
 
 4. Start vue in console: "npm run dev"
 
